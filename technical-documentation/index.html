@@ -6,10 +6,26 @@
 
     <body>
         <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-        <main id="main-doc">
-            <section class="main-section" id="Section1">
+        <div id="flex-navbar">
+            <nav id="navbar">
                 <header>
-                    <h1>Section1</h1>
+                    <h2>Coding in latin</h2>
+                </header>
+                <div id="navbar-content">
+                    <a href="#Section_1" class="nav-link">Section 1</a>
+                    <a href="#Section_2" class="nav-link">Section 2</a>
+                    <a href="#Section_3" class="nav-link">Section 3</a>
+                    <a href="#Section_4" class="nav-link">Section 4</a>
+                    <a href="#Section_5" class="nav-link">Section 5</a>
+                </div>
+            </nav>
+        </div>
+
+        <main id="main-doc">
+
+            <section class="main-section" id="Section_1">
+                <header>
+                    <h1>Section 1</h1>
                 </header>
                 <p>Donec non libero molestie metus vulputate rutrum. Nulla risus nisl, semper at porttitor ac, consectetur rutrum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
                     posuere cubilia curae; Nulla quis ante nisl. Vestibulum tincidunt, sem eget euismod fermentum, ex dui ullamcorper tortor, at gravida dolor risus quis sapien. Mauris suscipit ultricies
@@ -29,14 +45,15 @@
                 </ol>
 
                 <code>
-                    x=a;
-                    y=b
+                    y = x + y;
+                    x = y - x;
+                    y = y - x;
                 </code>
             </section>
 
-            <section class="main-section" id="Section2">
+            <section class="main-section" id="Section_2">
                 <header>
-                    <h1>Section2</h1>
+                    <h1>Section 2</h1>
                 </header>
                 <p>Maecenas ac malesuada ex, at aliquet metus. Morbi pharetra magna ac tortor sagittis laoreet. Nam a est ac eros aliquam rutrum posuere quis lacus. Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Nunc suscipit luctus rutrum. Morbi vulputate vitae lacus convallis egestas. Nulla dui diam, ultrices in pellentesque non, pharetra a felis.
@@ -46,11 +63,15 @@
                 <p>Vestibulum sed elementum odio. Phasellus a arcu ullamcorper, tempor nulla quis, vestibulum sem. Aenean pellentesque eros ac massa venenatis consequat. In id efficitur ipsum, sit amet
                     elementum urna. Maecenas lobortis leo eu odio fringilla placerat. Aenean varius erat id vehicula faucibus. Nunc a libero hendrerit, tempor leo eu, volutpat nulla. Maecenas posuere
                     dapibus arcu, ac vestibulum arcu aliquam eu. </p>
+
+                <code>
+                    System.out.println("Hello world!");
+                </code>
             </section>
 
-            <section class="main-section" id="Section3">
+            <section class="main-section" id="Section_3">
                 <header>
-                    <h1>Section3</h1>
+                    <h1>Section 3</h1>
                 </header>
                 <p>Vestibulucim sed elementum odio. Phasellus a arcu ullamcorper, tempor nulla quis, vestibulum sem. Aenean pellentesque eros ac massa venenatis consequat. In id efficitur ipsum, sit amet
                     elementum urna. Maecenas lobortis leo eu odio fringilla placerat. Aenean varius erat id vehicula faucibus. Nunc a libero hendrerit, tempor leo eu, volutpat nulla. Maecenas posuere
@@ -60,11 +81,15 @@
                     tristique eu. Nulla mauris ipsum, vehicula et porta nec, tristique et diam. In ut elementum magna, et commodo odio. Quisque posuere augue et consequat gravida. Nunc sed porttitor nulla,
                     at porta est. Vestibulum tincidunt iaculis libero, ac sollicitudin nisi interdum et. Nunc tincidunt sem ut purus dignissim faucibus. Nam faucibus felis vel finibus gravida. Integer
                     accumsan, turpis at interdum porta, diam dolor lacinia ex, quis laoreet ante est nec eros. In fermentum nibh eu dolor blandit pharetra. </p>
+
+                <code>
+                    with import <nixpkgs> {};
+                </code>
             </section>
 
-            <section class="main-section" id="Section4">
+            <section class="main-section" id="Section_4">
                 <header>
-                    <h1>Section4</h1>
+                    <h1>Section 4</h1>
                 </header>
                 <p>Aenean pellentesque cursus purus ac hendrerit. Praesent tempor viverra eros in eleifend. Donec laoreet erat dolor, id feugiat magna varius sit amet. Vivamus iaculis pretium odio sed
                     lacinia. Donec non consequat felis, sed tincidunt velit. In egestas enim facilisis odio blandit maximus. Etiam ac elit vestibulum, luctus sapien ac, volutpat magna. Nullam id ex
@@ -74,11 +99,15 @@
                     Pellentesque sagittis, odio sit amet lacinia varius, ipsum augue bibendum sapien, vel auctor turpis diam in ex. Proin pretium varius tempor. Nulla consequat finibus lectus in semper.
                     Vivamus interdum diam a nisl facilisis posuere. Suspendisse lobortis, libero nec faucibus pretium, mauris risus suscipit enim, et convallis dolor augue in libero. Duis tincidunt in dolor
                     quis laoreet. Nulla sollicitudin at enim ac rutrum. Maecenas faucibus metus sit amet varius consectetur. </p>
+
+                <code>
+                    command || fail
+                </code>
             </section>
 
-            <section class="main-section" id="Section5">
+            <section class="main-section" id="Section_5">
                 <header>
-                    <h1>Section5</h1>
+                    <h1>Section 5</h1>
                 </header>
                 <p>Donec rutrum pretium dui, in commodo felis placerat id. Etiam ut lacus et sapien ornare condimentum id eget nisi. Praesent nec enim diam. Ut non metus dictum, commodo nisi ac,
                     vestibulum purus. Pellentesque eu ligula sem. Suspendisse potenti. Aliquam efficitur turpis nec interdum commodo. Nunc interdum laoreet tortor, non venenatis felis commodo ac. Proin
@@ -89,7 +118,12 @@
                     tincidunt felis ac scelerisque eleifend. Ut suscipit lectus diam, eu fermentum sem lacinia eget. Suspendisse vitae aliquam mauris. In id metus sed felis mattis ornare pretium vel eros.
                     Nullam faucibus ante vel felis mattis, et accumsan velit sagittis. Donec nec erat semper, facilisis mauris sit amet, posuere arcu. Cras vel semper odio. Aliquam erat volutpat. Fusce
                     rhoncus tortor elementum neque ultrices rutrum. </p>
+
+                <code>
+                    echo "Hello $USER"
+                </code>
             </section>
+
         </main>
     </body>
 </html>
