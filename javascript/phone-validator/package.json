@@ -1,0 +1,14 @@
+{
+  "name": "phone-validator",
+  "version": "1.0.0",
+  "description": "Phone Number Validator challenge in FreeCodeCamp",
+  "main": "phone-validator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Haf",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
