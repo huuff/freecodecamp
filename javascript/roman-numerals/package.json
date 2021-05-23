@@ -1,0 +1,16 @@
+{
+  "name": "roman-numerals",
+  "version": "1.0.0",
+  "description": "Roman numerals challenge in FreeCodeCamp",
+  "main": "roman-numerals.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Haf",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^26.6.3"
+  }
+}
