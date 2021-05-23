@@ -1,0 +1,92 @@
+html, body {
+    margin: 0;
+    height:100%;
+    width:100%;
+    padding:0;
+}
+
+section {
+    display: block;
+    height:100%;
+    width:100%;
+    box-sizing:border-box;
+}
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+    background-color: orange;
+    justify-content: flex-end;
+    column-gap: 10px;
+}
+
+.text-section {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+#welcome-section {
+    background-color: gray;
+    color: white;
+}
+
+#projects {
+    padding: 15% 15%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+    grid-template-rows: 1fr 1fr;
+}
+
+@media only screen and (max-width: 1000px) {
+    #projects {
+        display: flex;
+        flex-direction: column;
+        row-gap: 25px;
+    }
+
+    .project-tile {
+        padding: 5% 0;
+    }
+}
+
+.project-tile {
+    border-style: solid;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.project-tile:hover {
+    background-color: yellow;
+    transform: scale(1.2);
+}
+
+#skills {
+    background-color: gray;
+    color: white;
+}
+
+#skills ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.project-tile a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-tile a:hover {
+    color: red;
+    font-weight: bold;
+}
