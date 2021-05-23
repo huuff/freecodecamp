@@ -1,0 +1,14 @@
+{
+  "name": "caesars-cipher",
+  "version": "1.0.0",
+  "description": "Caesar's Cipher challenge in FreeCodeCamp",
+  "main": "caesars-cipher.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Haf",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
