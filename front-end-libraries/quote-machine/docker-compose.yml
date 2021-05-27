@@ -1,0 +1,6 @@
+testing-nginx:
+  image: nginx
+  volumes: 
+    - .:/usr/share/nginx/html
+  ports:
+    - 9080:80
