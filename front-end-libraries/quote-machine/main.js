@@ -41,7 +41,8 @@ class QuoteMachine extends React.Component {
         super(props);
 
         this.state = {
-            index: this.#randomIndex()
+            index: this.#randomIndex(),
+            changeCount: 0
         }
 
         this.changeQuote = this.changeQuote.bind(this);
@@ -52,8 +53,9 @@ class QuoteMachine extends React.Component {
 }
 
     changeQuote() {
-        this.setState(() => ({
-            index: this.#randomIndex()
+        this.setState((state) => ({
+            index: this.#randomIndex(),
+            changeCount: state.changeCount+1
         }));
         this.forceUpdate();
     }
@@ -65,15 +67,32 @@ class QuoteMachine extends React.Component {
                         <h4>Dark quote of the moment</h4>
                     </div>
                    <div className="card-body">
-                       <blockquote className="blockquote animate__animated animate__fadeIn">
-                           <p>"{quote.text}"</p>
-                           <footer className="blockquote-footer"><cite>{quote.author}</cite></footer>
+                       <blockquote className="blockquote animate__animated animate__fadeIn" key={this.state.changeCount}>
+                           <p id="text">"{quote.text}"</p>
+                           <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
                        </blockquote>
                     </div>
-                   <div className="card-footer">
-                       <button onClick={this.changeQuote} className="btn btn-primary">Change quote</button>
+                   <div className="card-footer container">
+                       {/* <a id="tweet-quote" className="btn btn-secondary float-start"><i class="fa fa-twitter"></i></a> */}
+                       <Tweet quote={quote.text} author={quote.author}/>
+                       <button id="new-quote" onClick={this.changeQuote} className="btn btn-primary float-end">Change quote</button>
                     </div>
                </div>
+    }
+}
+
+class Tweet extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return <a
+                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('"' + this.props.quote + '" ') + this.props.author}`}
+                   id="tweet-quote"
+                   className="btn btn-secondary float-start">
+                   <i className="fa fa-twitter"></i>
+               </a>
     }
 }
 
