@@ -14,7 +14,8 @@ class QuoteMachine extends React.Component {
                 text: "",
                 author: "",
             },
-            changeCount: 0
+            changeCount: 0,
+            loading: false,
         }
 
         this.changeQuote = this.changeQuote.bind(this);
@@ -25,6 +26,9 @@ class QuoteMachine extends React.Component {
     }
 
     changeQuote() {
+        this.setState(() => ({
+            loading: true
+        }));
         fetch("http://api.quotable.io/random", {
             method: 'GET',
             headers: {
@@ -38,7 +42,8 @@ class QuoteMachine extends React.Component {
                         text: result.content,
                         author: result.author,
                     },
-                    changeCount: state.changeCount + 1
+                    changeCount: state.changeCount + 1,
+                    loading: false,
                 }))
             })
     }
@@ -50,7 +55,7 @@ class QuoteMachine extends React.Component {
                        <h4>Dark quote of the moment</h4>
                    </div>
                    <div className="card-body">
-                       <blockquote className="blockquote animate__animated animate__fadeIn" key={this.state.changeCount}>
+                       <blockquote className="blockquote animated fadeIn" key={this.state.changeCount}>
                            <p id="text">"{quote.text}"</p>
                            <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
                        </blockquote>

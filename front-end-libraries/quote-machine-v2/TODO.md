@@ -1,5 +1,4 @@
-* Get quotes from API
-* Fix animate.css
+* Get quotes to fadein and fadeout (react-animated-css?)
+* Get quote from same author
 * Fix fontawesome
-* Why isn't the div centered vertically?
 * Use nix
