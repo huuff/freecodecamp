@@ -27,7 +27,6 @@ class ChangeInterval {
 
 }
 
-
 class Main extends React.Component {
     constructor(props) {
         super(props);
@@ -40,19 +39,11 @@ class Main extends React.Component {
             interval: new ChangeInterval(this.newQuote.bind(this), AUTO_CHANGE_TIME),
         };
 
-
-        this.changeQuote = this.changeQuote.bind(this);
         this.newQuote = this.newQuote.bind(this);
     }
 
     componentDidMount() {
         this.newQuote();
-    }
-
-    changeQuote(newQuote) {
-        this.setState((state) => ({
-            quote: newQuote,
-        }))
     }
 
     newQuote() {
@@ -61,8 +52,8 @@ class Main extends React.Component {
         }));
         fetchQuote((response) => {
             setTimeout( () => {
-                this.changeQuote(response.quote);
                 this.setState(() => ({
+                    quote: response.quote,
                     loading: false
                 }));
             }, REFRESH_TIME - response.time); // This is specific to the fading out and fading in rendering effect I want
