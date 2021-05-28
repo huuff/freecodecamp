@@ -5,21 +5,26 @@ import ReactDOM from "react-dom";
 import 'bootstrap';
 import './main.scss';
 
+const REFRESH_TIME = 600;
+
 function fetchQuote(onArrival) {
-        fetch("http://api.quotable.io/random", {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(res => ({
-                text: res.content,
+    const startTime = Date.now();
+    fetch("http://api.quotable.io/random", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+        .then(res => ({
+            quote: {
+            text: res.content,
                 author: res.author
-            }
-                         ))
-            .then(onArrival);
-    }
+            },
+            time: Date.now() - startTime
+        }))
+        .then(onArrival);
+}
 
 class Main extends React.Component {
     constructor(props) {
@@ -52,11 +57,14 @@ class Main extends React.Component {
         this.setState((state) => ({
             loading: true,
         }));
-       fetchQuote((quote) => {
-            this.changeQuote(quote);
-            this.setState(() => ({
-                loading: false
-            }));
+        fetchQuote((response) => {
+            setTimeout( () => {
+                this.changeQuote(response.quote);
+                this.setState(() => ({
+                    loading: false
+                }));
+            }, REFRESH_TIME - response.time); // This is specific to the fading out and fading in rendering effect I want
+                                              // so I should look into a way of putting it into the component
         });
     }
 
@@ -78,7 +86,7 @@ class QuoteMachine extends React.Component {
     render() {
         const quote = this.props.quote;
         return (
-            <div id="quote-box" class="row min-vh-100 justify-content-center align-items-center">
+            <div id="quote-box" className="row min-vh-100 justify-content-center align-items-center">
                 <div className="card shadow w-50 mb-3">
                     <div className="card-header">
                         <h4>Quote of the moment</h4>
