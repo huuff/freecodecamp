@@ -1,7 +1,7 @@
 import React from 'react';
 import Tweet from './twitter.js';
 
-export default class QuoteMachine extends React.Component {
+export default class QuoteBox extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -20,9 +20,10 @@ export default class QuoteMachine extends React.Component {
                             <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
                         </blockquote>
                     </div>
-                    <div className="card-footer container">
-                        <Tweet quote={quote.text} author={quote.author}/>
-                        <button id="new-quote" onClick={this.props.newQuote} className="btn btn-primary float-end">Change quote</button>
+                    <div className="card-footer">
+                        <Tweet quote={quote.text} author={quote.author} />
+                        <button id="author-quote" onClick={this.props.authorQuote} className="btn btn-primary float-end ms-2">Quote from this author</button>
+                        <button id="new-quote" onClick={this.props.randomQuote} className="btn btn-primary float-end ms-2">Random quote</button>
                     </div>
                 </div>
             </div>

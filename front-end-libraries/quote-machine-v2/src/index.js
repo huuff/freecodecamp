@@ -7,7 +7,7 @@ import 'bootstrap';
 import './main.scss';
 
 import Debug from "./debug.js";
-import QuoteMachine from "./quote-box.js";
+import QuoteBox from "./quote-box.js";
 import fetchQuote from "./fetch-quote.js";
 
 const REFRESH_TIME = 1000;
@@ -34,39 +34,52 @@ class Main extends React.Component {
             quote: {
                 text: "",
                 author: "",
+                authorSlug: "",
             },
             loading: true,
-            interval: new ChangeInterval(this.newQuote.bind(this), AUTO_CHANGE_TIME),
+            interval: new ChangeInterval(this.randomQuote.bind(this), AUTO_CHANGE_TIME),
         };
 
-        this.newQuote = this.newQuote.bind(this);
+        this.randomQuote = this.randomQuote.bind(this);
+        this.authorQuote = this.authorQuote.bind(this);
+        this.changeQuote = this.changeQuote.bind(this);
     }
 
     componentDidMount() {
-        this.newQuote();
+        this.randomQuote();
     }
 
-    newQuote() {
+    changeQuote(response) {
+        setTimeout( () => {
+            this.setState(() => ({
+                quote: response.quote,
+                loading: false
+            }));
+        }, REFRESH_TIME - response.time);
+    }
+
+    //TODO: DRY both of these
+    randomQuote() {
         this.setState((state) => ({
             loading: true,
         }));
-        fetchQuote((response) => {
-            setTimeout( () => {
-                this.setState(() => ({
-                    quote: response.quote,
-                    loading: false
-                }));
-            }, REFRESH_TIME - response.time); // This is specific to the fading out and fading in rendering effect I want
-            // so I should look into a way of putting it into the component
-        });
+        fetchQuote(this.changeQuote);
+        this.state.interval.reset();
+    }
+
+    authorQuote() {
+        this.setState((state) => ({
+            loading: true,
+        }));
+        fetchQuote(this.changeQuote, this.state.quote.authorSlug);
         this.state.interval.reset();
     }
 
     render() {
         return (
             <div>
-                <QuoteMachine quote={this.state.quote} loading={this.state.loading} newQuote={this.newQuote} />
-                <Debug loading={this.state.loading} />
+                <QuoteBox quote={this.state.quote} loading={this.state.loading} randomQuote={this.randomQuote} authorQuote={this.authorQuote} />
+                <Debug loading={this.state.loading} quote={JSON.stringify(this.state.quote)}/>
             </div>
         );
     }
