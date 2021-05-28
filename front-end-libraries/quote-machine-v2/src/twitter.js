@@ -1,8 +1,6 @@
 import React from 'react';
-import '@fortawesome/fontawesome-free/js/fontawesome'
-import '@fortawesome/fontawesome-free/js/brands'
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 export default class Tweet extends React.Component {
     constructor(props) {
@@ -15,6 +13,7 @@ export default class Tweet extends React.Component {
                    id="tweet-quote"
                    className="btn btn-secondary float-start">
                    <i className="fab fa-twitter"></i>
+                   <FontAwesomeIcon icon={faTwitter} />
                </a>
     }
 }

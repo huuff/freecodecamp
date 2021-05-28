@@ -1,9 +1,9 @@
-export default function fetchQuote(onArrival, authorSlug) {
+export default function fetchQuote(onArrival, log, authorSlug) {
     let url = new URL("http://api.quotable.io/random");
     if (authorSlug !== undefined) {
         url.searchParams.append("author", authorSlug);
     }
-
+    log(`Fetching: ${url}`)
     const startTime = Date.now();
     fetch(url, {
         method: 'GET',
@@ -11,7 +11,9 @@ export default function fetchQuote(onArrival, authorSlug) {
             'Content-Type': 'application/json'
         }
     })
-        .then(res => res.json())
+        .then(res => {
+            return res.json();
+        })
         .then(res => ({
             quote: {
                 text: res.content,

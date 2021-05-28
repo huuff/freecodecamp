@@ -17,12 +17,12 @@ class ChangeInterval {
     constructor(func, time) {
         this.func = func;
         this.time = time;
-        this.interval = setInterval(this.func, this.time);
+        this.intervalId = setInterval(this.func, this.time);
     }
 
     reset() {
         clearInterval(this.interval);
-        this.interval = setInterval(this.func, this.time);
+        this.intervalId = setInterval(this.func, this.time);
     }
 
 }
@@ -38,11 +38,13 @@ class Main extends React.Component {
             },
             loading: true,
             interval: new ChangeInterval(this.randomQuote.bind(this), AUTO_CHANGE_TIME),
+            logs: [],
         };
 
         this.randomQuote = this.randomQuote.bind(this);
         this.authorQuote = this.authorQuote.bind(this);
         this.changeQuote = this.changeQuote.bind(this);
+        this.log = this.log.bind(this);
     }
 
     componentDidMount() {
@@ -63,7 +65,7 @@ class Main extends React.Component {
         this.setState((state) => ({
             loading: true,
         }));
-        fetchQuote(this.changeQuote);
+        fetchQuote(this.changeQuote, this.log);
         this.state.interval.reset();
     }
 
@@ -71,15 +73,21 @@ class Main extends React.Component {
         this.setState((state) => ({
             loading: true,
         }));
-        fetchQuote(this.changeQuote, this.state.quote.authorSlug);
+        fetchQuote(this.changeQuote, this.log, this.state.quote.authorSlug);
         this.state.interval.reset();
+    }
+
+    log(message) {
+        this.setState((state) => ({
+            logs: [...state.logs].concat(message)
+        }));
     }
 
     render() {
         return (
             <div>
                 <QuoteBox quote={this.state.quote} loading={this.state.loading} randomQuote={this.randomQuote} authorQuote={this.authorQuote} />
-                <Debug loading={this.state.loading} quote={JSON.stringify(this.state.quote)}/>
+                <Debug loading={this.state.loading} quote={JSON.stringify(this.state.quote)} logs={this.state.logs} interval={JSON.stringify(this.state.interval)}/>
             </div>
         );
     }
