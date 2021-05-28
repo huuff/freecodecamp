@@ -1,4 +1,3 @@
 * Get quote from same author
-* Fix fontawesome
 * Use nix
-* Debug as little window on left, add console with logs.
+* Add console with logs to debug, add a way to expand and hide it.

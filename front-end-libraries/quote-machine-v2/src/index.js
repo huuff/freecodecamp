@@ -1,34 +1,32 @@
 'use strict';
 
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import 'bootstrap';
 import './main.scss';
 
-import Tweet from "./twitter.js";
 import Debug from "./debug.js";
+import QuoteMachine from "./quote-box.js";
+import fetchQuote from "./fetch-quote.js";
 
-const REFRESH_TIME = 600;
+const REFRESH_TIME = 1000;
+const AUTO_CHANGE_TIME = 15000;
 
-function fetchQuote(onArrival) {
-    const startTime = Date.now();
-    fetch("http://api.quotable.io/random", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(res => res.json())
-        .then(res => ({
-            quote: {
-                text: res.content,
-                author: res.author
-            },
-            time: Date.now() - startTime
-        }))
-        .then(onArrival);
+class ChangeInterval {
+    constructor(func, time) {
+        this.func = func;
+        this.time = time;
+        this.interval = setInterval(this.func, this.time);
+    }
+
+    reset() {
+        clearInterval(this.interval);
+        this.interval = setInterval(this.func, this.time);
+    }
+
 }
+
 
 class Main extends React.Component {
     constructor(props) {
@@ -40,7 +38,9 @@ class Main extends React.Component {
             },
             changeCount: 0,
             loading: true,
-        }
+            interval: new ChangeInterval(this.newQuote.bind(this), AUTO_CHANGE_TIME),
+        };
+
 
         this.changeQuote = this.changeQuote.bind(this);
         this.newQuote = this.newQuote.bind(this);
@@ -70,6 +70,7 @@ class Main extends React.Component {
             }, REFRESH_TIME - response.time); // This is specific to the fading out and fading in rendering effect I want
             // so I should look into a way of putting it into the component
         });
+        this.state.interval.reset();
     }
 
     render() {
@@ -82,34 +83,6 @@ class Main extends React.Component {
     }
 }
 
-class QuoteMachine extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const quote = this.props.quote;
-        return (
-            <div id="quote-box" className="row min-vh-100 justify-content-center align-items-center">
-                <div className="card shadow w-50 mb-3">
-                    <div className="card-header">
-                        <h4>Quote of the moment</h4>
-                    </div>
-                    <div className="card-body">
-                        <blockquote className={`blockquote animated ${this.props.loading ? "fadeOut" : "fadeIn"}`} key={this.props.changeCount}>
-                            <p id="text">"{quote.text}"</p>
-                            <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
-                        </blockquote>
-                    </div>
-                    <div className="card-footer container">
-                        <Tweet quote={quote.text} author={quote.author}/>
-                        <button id="new-quote" onClick={this.props.newQuote} className="btn btn-primary float-end">Change quote</button>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
 
 ReactDOM.render(
     <Main />,
