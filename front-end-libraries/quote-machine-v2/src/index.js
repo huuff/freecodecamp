@@ -36,7 +36,6 @@ class Main extends React.Component {
                 text: "",
                 author: "",
             },
-            changeCount: 0,
             loading: true,
             interval: new ChangeInterval(this.newQuote.bind(this), AUTO_CHANGE_TIME),
         };
@@ -53,7 +52,6 @@ class Main extends React.Component {
     changeQuote(newQuote) {
         this.setState((state) => ({
             quote: newQuote,
-            changeCount: state.changeCount + 1
         }))
     }
 
@@ -76,8 +74,8 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <QuoteMachine quote={this.state.quote} changeCount={this.state.changeCount} loading={this.state.loading} newQuote={this.newQuote} />
-                <Debug loading={this.state.loading} changeCount={this.state.changeCount} />
+                <QuoteMachine quote={this.state.quote} loading={this.state.loading} newQuote={this.newQuote} />
+                <Debug loading={this.state.loading} />
             </div>
         );
     }

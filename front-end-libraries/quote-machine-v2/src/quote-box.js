@@ -15,7 +15,7 @@ export default class QuoteMachine extends React.Component {
                         <h4>Quote of the moment</h4>
                     </div>
                     <div className="card-body">
-                        <blockquote className={`blockquote animated ${this.props.loading ? "fadeOut" : "fadeIn"} slow`} key={this.props.changeCount}>
+                        <blockquote className={`blockquote animated ${this.props.loading ? "fadeOut" : "fadeIn"} slow`}>
                             <p id="text">"{quote.text}"</p>
                             <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
                         </blockquote>
