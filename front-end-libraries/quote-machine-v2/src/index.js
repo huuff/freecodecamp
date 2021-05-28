@@ -7,6 +7,7 @@ import 'bootstrap';
 import './main.scss';
 
 import Tweet from "./twitter.js";
+import Debug from "./debug.js";
 
 const REFRESH_TIME = 600;
 
@@ -104,26 +105,6 @@ class QuoteMachine extends React.Component {
                         <Tweet quote={quote.text} author={quote.author}/>
                         <button id="new-quote" onClick={this.props.newQuote} className="btn btn-primary float-end">Change quote</button>
                     </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-class Debug extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="card fixed-bottom">
-                <div className="card-header">
-                    <h5>Debug</h5>
-                </div>
-                <div className="card-body">
-                    <p>Loading: {this.props.loading.toString()}</p>
-                    <p>Times changed: {this.props.changeCount}</p>
                 </div>
             </div>
         );
