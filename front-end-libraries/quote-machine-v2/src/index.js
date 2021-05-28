@@ -2,8 +2,11 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+
 import 'bootstrap';
 import './main.scss';
+
+import Tweet from "./twitter.js";
 
 const REFRESH_TIME = 600;
 
@@ -18,7 +21,7 @@ function fetchQuote(onArrival) {
         .then(res => res.json())
         .then(res => ({
             quote: {
-            text: res.content,
+                text: res.content,
                 author: res.author
             },
             time: Date.now() - startTime
@@ -64,7 +67,7 @@ class Main extends React.Component {
                     loading: false
                 }));
             }, REFRESH_TIME - response.time); // This is specific to the fading out and fading in rendering effect I want
-                                              // so I should look into a way of putting it into the component
+            // so I should look into a way of putting it into the component
         });
     }
 
@@ -104,21 +107,6 @@ class QuoteMachine extends React.Component {
                 </div>
             </div>
         );
-    }
-}
-
-class Tweet extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return <a
-                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('"' + this.props.quote + '" ') + this.props.author}`}
-                   id="tweet-quote"
-                   className="btn btn-secondary float-start">
-                   <i className="fa fa-twitter"></i>
-               </a>
     }
 }
 
