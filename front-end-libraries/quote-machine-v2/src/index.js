@@ -15,20 +15,19 @@ class QuoteMachine extends React.Component {
                 author: "",
             },
             changeCount: 0,
-            loading: false,
+            loading: true,
         }
 
+        this.newQuote = this.newQuote.bind(this);
+        this.getQuote = this.getQuote.bind(this);
         this.changeQuote = this.changeQuote.bind(this);
     }
 
     componentDidMount() {
-        this.changeQuote();
+        this.newQuote();
     }
 
-    changeQuote() {
-        this.setState(() => ({
-            loading: true
-        }));
+    getQuote(onArrival) {
         fetch("http://api.quotable.io/random", {
             method: 'GET',
             headers: {
@@ -36,33 +35,49 @@ class QuoteMachine extends React.Component {
             }
         })
             .then(res => res.json())
-            .then((result) => {
-                this.setState((state) => ({
-                    quote: {
-                        text: result.content,
-                        author: result.author,
-                    },
-                    changeCount: state.changeCount + 1,
-                    loading: false,
-                }))
-            })
+            .then(res => ({
+                    text: res.content,
+                    author: res.author
+                }
+            ))
+            .then(onArrival);
+    }
+
+    changeQuote(newQuote) {
+        console.log(newQuote);
+        this.setState((state) => ({
+            quote: newQuote,
+            changeCount: state.changeCount + 1
+        }))
+    }
+
+    newQuote() {
+        this.setState((state) => ({
+            loading: true,
+        }));
+        this.getQuote((quote) => {
+            this.changeQuote(quote);
+            this.setState(() => ({
+                loading: false
+            }));
+        });
     }
 
     render() {
         const quote = this.state.quote;
         return <div className="card shadow w-50 mb-3">
                    <div className="card-header">
-                       <h4>Dark quote of the moment</h4>
+                       <h4>Status: {this.state.loading.toString()}</h4>
                    </div>
                    <div className="card-body">
-                       <blockquote className="blockquote animated fadeIn" key={this.state.changeCount}>
+                       <blockquote className={`blockquote animated ${this.state.loading ? "fadeOut" : "fadeIn"}`} key={this.state.changeCount}>
                            <p id="text">"{quote.text}"</p>
                            <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
                        </blockquote>
                    </div>
                    <div className="card-footer container">
                        <Tweet quote={quote.text} author={quote.author}/>
-                       <button id="new-quote" onClick={this.changeQuote} className="btn btn-primary float-end">Change quote</button>
+                       <button id="new-quote" onClick={this.newQuote} className="btn btn-primary float-end">Change quote</button>
                    </div>
                </div>
     }
