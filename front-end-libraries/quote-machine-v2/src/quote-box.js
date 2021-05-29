@@ -15,10 +15,16 @@ export default class QuoteBox extends React.Component {
                         <h4>Quote of the moment</h4>
                     </div>
                     <div className="card-body">
-                        <blockquote className={`blockquote animated ${this.props.loading ? "fadeOut" : "fadeIn"} slow`}>
-                            <p id="text">"{quote.text}"</p>
-                            <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
-                        </blockquote>
+                        {
+                            quote.text !== ""
+                            ? <blockquote className={`blockquote animated ${this.props.loading ? "fadeOut" : "fadeIn"} slow`}>
+                                <p id="text">"{quote.text}"</p>
+                                <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
+                            </blockquote>
+                            : <div className="d-flex justify-content-center my-5">
+                                  <div className = "spinner-border text-primary" style={{width: "3rem", height: "3rem"}}></div>
+                              </div>
+                        }
                     </div>
                     <div className="card-footer">
                         <Tweet quote={quote.text} author={quote.author} />

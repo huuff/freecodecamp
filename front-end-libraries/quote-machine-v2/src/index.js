@@ -21,7 +21,7 @@ class ChangeInterval {
     }
 
     reset() {
-        clearInterval(this.interval);
+        clearInterval(this.intervalId);
         this.intervalId = setInterval(this.func, this.time);
     }
 
@@ -37,7 +37,10 @@ class Main extends React.Component {
                 authorSlug: "",
             },
             loading: true,
-            interval: new ChangeInterval(this.randomQuote.bind(this), AUTO_CHANGE_TIME),
+            interval: new ChangeInterval(() => {
+                this.log('Triggered interval');
+                this.randomQuote();
+            }, AUTO_CHANGE_TIME),
             logs: [],
         };
 
@@ -87,7 +90,7 @@ class Main extends React.Component {
         return (
             <div>
                 <QuoteBox quote={this.state.quote} loading={this.state.loading} randomQuote={this.randomQuote} authorQuote={this.authorQuote} />
-                <Debug loading={this.state.loading} quote={JSON.stringify(this.state.quote)} logs={this.state.logs} interval={JSON.stringify(this.state.interval)}/>
+                <Debug loading={this.state.loading} quote={JSON.stringify(this.state.quote)} logs={this.state.logs} interval={this.state.interval} />
             </div>
         );
     }
