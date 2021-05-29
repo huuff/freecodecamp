@@ -40,7 +40,7 @@ class Main extends React.Component {
             loading: true,
             interval: new ChangeInterval(() => {
                 this.log('Triggered interval');
-                this.randomQuote();
+                this.requestQuote({});
             }, AUTO_CHANGE_TIME),
             logs: [],
         };
