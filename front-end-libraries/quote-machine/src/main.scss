@@ -4,17 +4,19 @@
     color: blue;
 }
 
+$refresh-time: 1000ms;
+
 .refresh-quote-enter {
   opacity: 0;
 }
 .refresh-quote-enter-active {
   opacity: 1;
-  transition: opacity 1000ms;
+  transition: opacity $refresh-time;
 }
 .refresh-quote-exit {
   opacity: 1;
 }
 .refresh-quote-exit-active {
   opacity: 0;
-  transition: opacity 1000ms;
+  transition: opacity $refresh-time;
 }

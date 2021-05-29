@@ -37,8 +37,30 @@ export default class QuoteBox extends React.Component {
                     </div>
                     <div className="card-footer">
                         <Tweet quote={quote.text} author={quote.author} />
-                        <button id="author-quote" onClick={this.props.authorQuote} className="btn btn-primary float-end ms-2">Quote from this author</button>
-                        <button id="new-quote" onClick={this.props.randomQuote} className="btn btn-primary float-end ms-2">Random quote</button>
+                        <button
+                            id="author-quote"
+                            onClick={() => this.props.requestQuote({ 'author': this.props.quote.authorSlug })}
+                            className="btn btn-primary float-end ms-2">
+                            Quote from this author
+                        </button>
+                        <button
+                            id="new-quote"
+                            onClick={() => this.props.requestQuote({})}
+                            className="btn btn-primary float-end ms-2">
+                            Random quote
+                        </button>
+                    </div>
+                    <div>
+                        {
+                            quote.tags.map((tag, index) => (
+                                <a
+                                    className="me-3 link-primary"
+                                    key={tag+index}
+                                    onClick={() => this.props.requestQuote( {tags: [tag]} )}
+                                    style={{ cursor:'pointer' }}
+                                >
+                                    {tag}
+                                </a>)) }
                     </div>
                 </div>
             </div>

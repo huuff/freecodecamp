@@ -35,6 +35,7 @@ class Main extends React.Component {
                 text: "",
                 author: "",
                 authorSlug: "",
+                tags: [],
             },
             loading: true,
             interval: new ChangeInterval(() => {
@@ -44,14 +45,13 @@ class Main extends React.Component {
             logs: [],
         };
 
-        this.randomQuote = this.randomQuote.bind(this);
-        this.authorQuote = this.authorQuote.bind(this);
+        this.requestQuote = this.requestQuote.bind(this);
         this.changeQuote = this.changeQuote.bind(this);
         this.log = this.log.bind(this);
     }
 
     componentDidMount() {
-        this.randomQuote();
+        this.requestQuote({});
     }
 
     changeQuote(response) {
@@ -63,20 +63,11 @@ class Main extends React.Component {
         }, REFRESH_TIME - response.time);
     }
 
-    //TODO: DRY both of these
-    randomQuote() {
+    requestQuote(params) {
         this.setState((state) => ({
             loading: true,
         }));
-        fetchQuote(this.changeQuote, this.log);
-        this.state.interval.reset();
-    }
-
-    authorQuote() {
-        this.setState((state) => ({
-            loading: true,
-        }));
-        fetchQuote(this.changeQuote, this.log, this.state.quote.authorSlug);
+        fetchQuote(this.changeQuote, this.log, params);
         this.state.interval.reset();
     }
 
@@ -89,7 +80,7 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <QuoteBox quote={this.state.quote} loading={this.state.loading} randomQuote={this.randomQuote} authorQuote={this.authorQuote} />
+                <QuoteBox quote={this.state.quote} loading={this.state.loading} requestQuote={this.requestQuote} />
                 <Debug loading={this.state.loading} quote={JSON.stringify(this.state.quote)} logs={this.state.logs} interval={this.state.interval} />
             </div>
         );
