@@ -1,6 +1,20 @@
 @import "~bootstrap/scss/bootstrap";
-@import "~animate.css/source/animate.css";
 
 #toggle-debug:hover {
     color: blue;
+}
+
+.refresh-quote-enter {
+  opacity: 0;
+}
+.refresh-quote-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+.refresh-quote-exit {
+  opacity: 1;
+}
+.refresh-quote-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Tweet from './twitter.js';
+import { CSSTransition } from 'react-transition-group';
 
 export default class QuoteBox extends React.Component {
     constructor(props) {
@@ -15,9 +16,15 @@ export default class QuoteBox extends React.Component {
                         <h4>Quote of the moment</h4>
                     </div>
                     <div className="card-body">
+
+                        <CSSTransition
+                            in={!this.props.loading}
+                            timeout={1000}
+                            classNames="refresh-quote"
+                            >
                         {
                             quote.text !== ""
-                            ? <blockquote className={`blockquote animated ${this.props.loading ? "fadeOut" : "fadeIn"} slow`}>
+                            ? <blockquote className="blockquote">
                                 <p id="text">"{quote.text}"</p>
                                 <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
                             </blockquote>
@@ -25,6 +32,8 @@ export default class QuoteBox extends React.Component {
                                   <div className = "spinner-border text-primary" style={{width: "3rem", height: "3rem"}}></div>
                               </div>
                         }
+
+                        </CSSTransition>
                     </div>
                     <div className="card-footer">
                         <Tweet quote={quote.text} author={quote.author} />

@@ -4,3 +4,4 @@
 * Add sentiment analysis to check if quote is happy or not and change background accordingly
 * Add quotes to favorites
 * Find a way to get the quote box to have some minimum height
+* Currently the refresh time is repeated in 4 different places, find some way to DRY it
