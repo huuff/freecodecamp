@@ -19,7 +19,7 @@ import { Provider } from 'react-redux';
 import {changeQuote} from './quote-slice';
 import {setStatus, setRecentError} from './status-slice'
 
-import { showError } from './visual';
+import { showError, showQuote } from './visual';
 
 
 const REFRESH_TIME = 1000;
@@ -43,7 +43,6 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
             interval: new ChangeInterval(() => {
                 this.log('Triggered interval');
                 this.requestQuote({});
@@ -62,21 +61,14 @@ class Main extends React.Component {
     }
 
     changeQuote(response) {
-        setTimeout( () => {
-            this.setState(() => ({
-                quote: response.quote,
-                loading: false
-            }));
-            store.dispatch(changeQuote(response.quote))
-        }, REFRESH_TIME - response.time);
-
-
         if (_.isEqual(store.getState().quote, response.quote)) {
             this.log("Unable to find quote matching criteria");
             this.setStatus("FETCHED_SAME");
         } else {
             this.setStatus("OK");
         }
+
+        store.dispatch(changeQuote(response.quote))
     }
 
     setStatus(code) {
@@ -88,10 +80,8 @@ class Main extends React.Component {
     }
 
     requestQuote(params) {
-        this.setState((state) => ({
-            loading: true,
-        }));
-        fetchQuote(this.changeQuote, this.log, params);
+        showQuote()
+        setTimeout( () =>  fetchQuote(this.changeQuote, this.log, params), 500 ) //to prevent the quote from being changed while vanishing
         this.state.interval.reset();
     }
 
@@ -105,7 +95,7 @@ class Main extends React.Component {
         return (
             <div>
                 <StatusAlert />
-                <QuoteBox loading={this.state.loading} requestQuote={this.requestQuote} />
+                <QuoteBox requestQuote={this.requestQuote} />
                 <Debug
                     logs={this.state.logs}
                     interval={this.state.interval}

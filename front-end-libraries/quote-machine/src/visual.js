@@ -26,3 +26,8 @@ export function showError() {
     store.dispatch(visualSlice.actions.setShowError(true))
     setTimeout(() => store.dispatch(visualSlice.actions.setShowError(false)), 5000)
 }
+
+export function showQuote() {
+    store.dispatch(visualSlice.actions.setShowQuote(false))
+    setTimeout(() => store.dispatch(visualSlice.actions.setShowQuote(true)), 1000)
+}

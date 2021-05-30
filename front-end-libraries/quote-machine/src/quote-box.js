@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export default function QuoteBox(props) {
     const quote = useSelector((state) => state.quote);
+    const showQuote = (useSelector((state) => state.visual)).showQuote;
     const dispatch = useDispatch()
 
     return (
@@ -16,9 +17,10 @@ export default function QuoteBox(props) {
                 <div className="card-body">
 
                     <CSSTransition
-                        in={!props.loading}
+                        in={showQuote}
                         timeout={1000}
-                        classNames="refresh-quote"
+                        classNames="fade-effect"
+                        appear={true}
                     >
                         {
                             quote.text !== ""
