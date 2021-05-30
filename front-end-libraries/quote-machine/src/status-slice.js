@@ -10,11 +10,8 @@ export const statusSlice = createSlice({
         setStatus: (state, action) => {
             state.code = action.payload.code
         },
-        setRecentError: (state, action) => {
-            state.recentError = action.payload
-        }
     }
 })
 
-export const { setStatus, setRecentError } = statusSlice.actions
+export const { setStatus } = statusSlice.actions
 export default statusSlice.reducer

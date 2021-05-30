@@ -14,7 +14,7 @@ export default function Debug(props) {
     const dispatch = useDispatch()
     const status = useSelector((state) => state.status)
     const watched = {
-        recentError: status.recentError,
+        "Recent error": status.recentError,
     }
 
     return (

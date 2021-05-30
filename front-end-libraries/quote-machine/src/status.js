@@ -10,9 +10,10 @@ export const STATUS_STRING = {
 
 export default function StatusAlert() {
     const status = useSelector((state) => state.status)
+    const showError = (useSelector((state) => state.visual)).showError
 
     return (<CSSTransition
-                    in={status.recentError}
+                    in={showError}
                     timeout={1000}
                     classNames="fade-effect"
                     mountOnEnter={true}

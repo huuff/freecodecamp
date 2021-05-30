@@ -19,6 +19,8 @@ import { Provider } from 'react-redux';
 import {changeQuote} from './quote-slice';
 import {setStatus, setRecentError} from './status-slice'
 
+import { showError } from './visual';
+
 
 const REFRESH_TIME = 1000;
 const AUTO_CHANGE_TIME = 15000;
@@ -81,8 +83,7 @@ class Main extends React.Component {
         store.dispatch(setStatus({ code: code}))
 
         if (code !== "OK") {
-            store.dispatch(setRecentError(true))
-            setTimeout(() => store.dispatch(setRecentError(false)), 5000)
+            showError()
         }
     }
 
@@ -106,7 +107,6 @@ class Main extends React.Component {
                 <StatusAlert />
                 <QuoteBox loading={this.state.loading} requestQuote={this.requestQuote} />
                 <Debug
-                    loading={this.state.loading}
                     logs={this.state.logs}
                     interval={this.state.interval}
                     setStatus={this.setStatus}
