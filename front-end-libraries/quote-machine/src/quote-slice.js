@@ -11,7 +11,6 @@ export const quoteSlice = createSlice({
     },
     reducers: {
         changeQuote: (state, action) => {
-            console.log(`Triggered action with ${JSON.stringify(action.payload)}`)
             state.text = action.payload.text;
             state.author = action.payload.author;
             state.authorSlug = action.payload.authorSlug;
