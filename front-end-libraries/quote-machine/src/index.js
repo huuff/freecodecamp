@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
 import _ from "lodash";
 
 import 'bootstrap';
@@ -46,10 +47,12 @@ class Main extends React.Component {
             }, AUTO_CHANGE_TIME),
             logs: [],
             status: "OK",
+            gotErrorRecently: false,
         };
 
         this.requestQuote = this.requestQuote.bind(this);
         this.changeQuote = this.changeQuote.bind(this);
+        this.setStatus = this.setStatus.bind(this);
         this.log = this.log.bind(this);
     }
 
@@ -66,9 +69,9 @@ class Main extends React.Component {
         }, REFRESH_TIME - response.time);
         if (_.isEqual(this.state.quote, response.quote)) {
             this.log("Unable to find quote matching criteria");
-            this.setState(() => ({status: "FETCHED_SAME"}));
+            this.setStatus("FETCHED_SAME");
         } else {
-            this.setState(() => ({ status: "OK" }));
+            this.setStatus("OK");
         }
     }
 
@@ -86,19 +89,48 @@ class Main extends React.Component {
         }));
     }
 
+    setStatus(newStatus) {
+        this.setState((status) => ({
+            status: newStatus,
+            gotErrorRecently: newStatus !== "OK" ? true : false,
+        }));
+
+        if (newStatus !== "OK") {
+            setTimeout(() => {
+                this.setState(() => ({gotErrorRecently: false}));
+            }, 5000);
+        }
+    }
+
+
     render() {
         return (
             <div>
-                { this.state.status !== "OK" &&
-                  <div
-                      className="alert alert-danger position-fixed top-0 start-50 translate-middle-x alert-dismissable fade show"
-                      style={{minWidth: "60%"}}
-                      role="alert">
-                      {STATUS[this.state.status]}
-                  </div>
-                }
+                <CSSTransition
+                    in={this.state.gotErrorRecently}
+                    timeout={1000}
+                    classNames="fade-effect"
+                    mountOnEnter={true}
+                >
+                    <div
+                        className="alert alert-danger position-fixed top-0 start-50 translate-middle-x"
+                        style={{minWidth: "60%"}}
+                    >
+                        {STATUS[this.state.status]}
+                    </div>
+                </CSSTransition>
+
                 <QuoteBox quote={this.state.quote} loading={this.state.loading} requestQuote={this.requestQuote} />
-                <Debug loading={this.state.loading} quote={JSON.stringify(this.state.quote)} logs={this.state.logs} interval={this.state.interval} />
+                <Debug
+                    loading={this.state.loading}
+                    quote={JSON.stringify(this.state.quote)}
+                    logs={this.state.logs}
+                    interval={this.state.interval}
+                    status={this.state.status}
+                    gotErrorRecently={this.state.gotErrorRecently}
+                    setStatus={this.setStatus}
+                />
+
             </div>
         );
     }

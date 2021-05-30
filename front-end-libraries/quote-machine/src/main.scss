@@ -20,3 +20,36 @@ $refresh-time: 1000ms;
   opacity: 0;
   transition: opacity $refresh-time;
 }
+
+
+.fade-effect-enter {
+  opacity: 0;
+}
+.fade-effect-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.fade-effect-appear {
+  opacity: 0;
+}
+.fade-effect-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.fade-effect-enter-done {
+  opacity: 1;
+}
+
+.fade-effect-exit {
+  opacity: 1;
+}
+.fade-effect-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+
+.fade-effect-exit-done {
+  opacity: 0;
+}

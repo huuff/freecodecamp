@@ -43,6 +43,7 @@ export default class Debug extends React.Component {
                     <div id="log"> {/* Yes, I know the browser has a console */}
                         <textarea rows="5" id="console" value={this.props.logs.join("\n")} disabled={true} className="w-100 h-75 small"/>
                     </div>
+                    <button onClick={() => this.props.setStatus("ERROR")} className="btn btn-warning">Trigger error</button>
                 </div>
             </div>
             </div>

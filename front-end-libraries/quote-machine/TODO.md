@@ -1,5 +1,4 @@
 * Use nix
-* Make error alert fade in and out, maybe add a dismiss button
 * Add sentiment analysis to check if quote is happy or not and change background accordingly
 * Add quotes to favorites
 * Find a way to get the quote box to have some minimum height
@@ -8,5 +7,7 @@
 * Add bootstrap popover to twitter when trying to tweet something longer than 140 characters
 * Do I need "loading" for the refresh effect? Can't I just set the transition "in" to true or false or something?
 * Debug: Change any value directly in the window. Wouldn't it be cool?
-* Debug: Add button to trigger error status
 * Debug: Collapse fetch responses by default and allow expanding them
+* Alert: Maybe add dismiss button?
+* Alert: Maybe extract it to its own component
+* Use redux?
