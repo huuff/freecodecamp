@@ -13,6 +13,12 @@ import QuoteBox from "./quote-box.js";
 import fetchQuote from "./fetch-quote.js";
 import {STATUS} from "./status.js";
 
+// Redux
+import store from './store.js';
+import { Provider } from 'react-redux';
+import {changeQuote} from './quote-slice';
+
+
 const REFRESH_TIME = 1000;
 const AUTO_CHANGE_TIME = 15000;
 
@@ -34,12 +40,6 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            quote: {
-                text: "",
-                author: "",
-                authorSlug: "",
-                tags: [],
-            },
             loading: true,
             interval: new ChangeInterval(() => {
                 this.log('Triggered interval');
@@ -48,6 +48,7 @@ class Main extends React.Component {
             logs: [],
             status: "OK",
             gotErrorRecently: false,
+            quote: undefined, // HACK: to get my alert logic to work with Redux, remove it once I find something better
         };
 
         this.requestQuote = this.requestQuote.bind(this);
@@ -66,7 +67,10 @@ class Main extends React.Component {
                 quote: response.quote,
                 loading: false
             }));
+            store.dispatch(changeQuote(response.quote))
         }, REFRESH_TIME - response.time);
+
+
         if (_.isEqual(this.state.quote, response.quote)) {
             this.log("Unable to find quote matching criteria");
             this.setStatus("FETCHED_SAME");
@@ -120,10 +124,9 @@ class Main extends React.Component {
                     </div>
                 </CSSTransition>
 
-                <QuoteBox quote={this.state.quote} loading={this.state.loading} requestQuote={this.requestQuote} />
+                <QuoteBox loading={this.state.loading} requestQuote={this.requestQuote} />
                 <Debug
                     loading={this.state.loading}
-                    quote={JSON.stringify(this.state.quote)}
                     logs={this.state.logs}
                     interval={this.state.interval}
                     status={this.state.status}
@@ -138,7 +141,9 @@ class Main extends React.Component {
 
 
 ReactDOM.render(
-    <Main />,
+    <Provider store={store}>
+        <Main />
+    </Provider>,
     document.getElementById('root')
 );
 

@@ -11,3 +11,4 @@
 * Alert: Maybe add dismiss button?
 * Alert: Maybe extract it to its own component
 * Use redux?
+* Merge the fading of the alert and of the quotes

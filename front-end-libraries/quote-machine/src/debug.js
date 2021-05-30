@@ -38,7 +38,7 @@ export default class Debug extends React.Component {
             <div id="debug-body" className="collapse">
                 <div className="card-body px-3">
                     <ul>
-                        {this.iterableProps().map(([prop, val]) => <li key={prop}>{prop}: {val.toString()}</li>)}
+                        {this.iterableProps().map(([prop, val]) => <li key={prop}>{prop}: {val === undefined ? "undefined" : val.toString()}</li>)}
                     </ul>
                     <div id="log"> {/* Yes, I know the browser has a console */}
                         <textarea rows="5" id="console" value={this.props.logs.join("\n")} disabled={true} className="w-100 h-75 small"/>
