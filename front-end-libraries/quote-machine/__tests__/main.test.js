@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import QuoteBox from '../src/quote-box'
+import Main from '../src/index'
 
 // React testing library
 import { render, fireEvent, screen } from '@testing-library/react'
@@ -21,6 +21,10 @@ const mockFetch = jest.fn(() => ({
 }))
 
 test('changes quote randomly', () => {
-
+    render(
+        <Provider store={store}>
+            <Main fetchQuote={mockFetch} />
+        </Provider>
+    )
 })
 
