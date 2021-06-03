@@ -1,12 +1,11 @@
-export default function fetchQuote(onArrival, log, params) {
+export default function fetchFromQuotable(log, params) {
     let url = new URL("http://api.quotable.io/random");
     for (const param in params) {
         url.searchParams.append(param, params[param]);
     }
 
     log(`Fetching: ${url}`)
-    const startTime = Date.now();
-    fetch(url, {
+    return fetch(url, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -22,8 +21,6 @@ export default function fetchQuote(onArrival, log, params) {
                 authorSlug: res.authorSlug,
                 tags: res.tags,
             },
-            time: Date.now() - startTime
           };
         })
-        .then(onArrival);
 }

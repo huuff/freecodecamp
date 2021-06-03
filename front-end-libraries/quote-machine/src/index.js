@@ -11,7 +11,7 @@ import './main.scss';
 import Debug from "./debug.js";
 import { log } from "./debug"
 import QuoteBox from "./quote-box.js";
-import fetchQuote from "./fetch-quote.js";
+import fetchFromQuotable from "./fetch-from-quotable.js";
 import {StatusAlert, changeStatus} from "./status.js";
 
 // Redux
@@ -37,9 +37,13 @@ const changeQuote = (response) => {
 
         store.dispatch(setQuote(response.quote))
     }
-const requestQuote = (params) => {
+
+// maybe a better name for fetchFunction and fetchQuote?
+const requestQuote = (params, fetchQuote = fetchFromQuotable) => {
         showQuote()
-        setTimeout( () =>  fetchQuote(changeQuote, (msg) => store.dispatch(log(msg)), params), 500 ) //to prevent the quote from being changed while vanishing
+    setTimeout( () => {
+        fetchQuote((msg) => store.dispatch(log(msg)), params).then(changeQuote)
+    }, 500 ) //to prevent the quote from being changed while vanishing
         interval.reset();
     }
 
@@ -61,7 +65,7 @@ const Main = (props) => {
         return (
             <div>
                 <StatusAlert code={status.code} showError={visual.showError}/>
-                <QuoteBox quote={quote} showQuote={visual.showQuote} requestQuote={requestQuote} />
+                <QuoteBox quote={quote} showQuote={visual.showQuote} requestQuote={() => requestQuote(props.fetchQuote)} />
                 <Debug
                     logs={debug.logs}
                     changeStatus={changeStatus}
@@ -75,7 +79,7 @@ const Main = (props) => {
 
 ReactDOM.render(
     <Provider store={store}>
-        <Main />
+        <Main fetchQuote={fetchFromQuotable}/>
     </Provider>,
     document.getElementById('root')
 );

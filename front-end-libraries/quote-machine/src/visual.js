@@ -1,4 +1,4 @@
-/* I feel like there's something wrong to needing status for managing animations and effects
+/* I feel like there's something wrong to needing state for managing animations and effects
  * but I don't find a better way of doing it */
 import { createSlice } from '@reduxjs/toolkit'
 import store from './store'
@@ -19,7 +19,6 @@ export const visualSlice = createSlice({
     }
 })
 
-// export const { setShowQuote, setShowError } = visualSlice.actions
 export default visualSlice.reducer
 
 export function showError() {
