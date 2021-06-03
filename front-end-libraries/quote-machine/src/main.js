@@ -6,10 +6,11 @@ import _ from "lodash";
 // Redux actions
 import { log } from "./debug"
 import { setQuote } from './quote-slice'
+import { setStatus } from './status-slice'
 
 import Debug from "./debug.js";
 import QuoteBox from "./quote-box.js";
-import {StatusAlert, changeStatus} from "./status.js";
+import {StatusAlert} from "./status.js";
 
 import store from './store.js';
 
@@ -39,14 +40,15 @@ export class Main extends React.Component {
         })
 
     }
+
     changeQuote(response) {
         const previousQuote = store.getState().quote; //get rid of this
 
         if (_.isEqual(previousQuote, response)) {
             this.props.log("Unable to find quote matching criteria")
-            changeStatus("FETCHED_SAME");
+            this.props.setStatus("FETCHED_SAME");
         } else {
-            changeStatus("OK");
+            this.props.setStatus("OK");
         }
 
         this.props.setQuote(response)
@@ -73,7 +75,7 @@ export class Main extends React.Component {
                     requestQuote={this.requestQuote} />
                 <Debug
                     logs={this.props.debug.logs}
-                    changeStatus={this.props.changeStatus}
+                    changeStatus={this.props.setStatus}
                     status={this.props.status}
                     visual={this.props.visual}
                 />
@@ -89,4 +91,4 @@ const mapStateToProps = (state) => ({
     debug: state.debug
 })
 
-export default connect(mapStateToProps, { log, setQuote })(Main)
+export default connect(mapStateToProps, { log, setQuote, setStatus })(Main)

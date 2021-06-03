@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { showError } from './visual'
 
 export const statusSlice = createSlice({
     name: 'status',
@@ -12,5 +13,17 @@ export const statusSlice = createSlice({
     }
 })
 
-export const { setStatus } = statusSlice.actions
+export const setStatus = (code) => {
+    if (code !== "OK") {
+        showError()
+    }
+
+    return {
+        type: "SET_STATUS",
+        payload: {
+            code: code
+        }
+    }
+}
+
 export default statusSlice.reducer
