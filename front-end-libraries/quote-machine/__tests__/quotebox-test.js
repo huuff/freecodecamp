@@ -28,7 +28,7 @@ test('renders correctly', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('changes quote with react testing library', () => {
+test('changes quote randomly', () => {
   var quote = firstQuote
   const requestQuoteMock = jest.fn(() => {
     quote = secondQuote
@@ -39,11 +39,10 @@ test('changes quote with react testing library', () => {
     requestQuote={requestQuoteMock}
     />)
 
-  expect(screen.getByText(`"${firstQuote.text}"`)).toBeInTheDocument()
 
   fireEvent.click(screen.getByText('Random quote'))
-
   rerender(<QuoteBox quote={quote} />)
 
   expect(screen.getByText(`"${secondQuote.text}"`)).toBeInTheDocument()
 })
+

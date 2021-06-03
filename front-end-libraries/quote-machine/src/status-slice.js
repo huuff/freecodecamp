@@ -4,7 +4,6 @@ export const statusSlice = createSlice({
     name: 'status',
     initialState: {
         code: "OK",
-        recentError: false,
     },
     reducers: {
         setStatus: (state, action) => {

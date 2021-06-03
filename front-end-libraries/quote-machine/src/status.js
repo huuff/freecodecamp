@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 import { useSelector} from 'react-redux'
 
 import store from './store.js'
-import {setStatus, setRecentError} from './status-slice'
+import {setStatus} from './status-slice'
 import {showError} from './visual'
 
 export const STATUS_STRING = {
@@ -20,12 +20,10 @@ export const changeStatus = (code) => {
         }
     }
 
-export const StatusAlert = () => {
-    const status = useSelector((state) => state.status)
-    const showError = (useSelector((state) => state.visual)).showError
+export const StatusAlert = (props) => {
 
     return (<CSSTransition
-                    in={showError}
+                    in={props.showError}
                     timeout={1000}
                     classNames="fade-effect"
                     mountOnEnter={true}
@@ -34,7 +32,7 @@ export const StatusAlert = () => {
                         className="alert alert-danger position-fixed top-0 start-50 translate-middle-x"
                         style={{minWidth: "60%"}}
                     >
-                        {STATUS_STRING[status.code]}
+                        {STATUS_STRING[props.code]}
                     </div>
             </CSSTransition>)
 }

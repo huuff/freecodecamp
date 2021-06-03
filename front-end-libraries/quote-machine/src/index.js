@@ -60,7 +60,7 @@ const Main = (props) => {
 
         return (
             <div>
-                <StatusAlert />
+                <StatusAlert code={status.code} showError={visual.showError}/>
                 <QuoteBox quote={quote} showQuote={visual.showQuote} requestQuote={requestQuote} />
                 <Debug
                     logs={debug.logs}
