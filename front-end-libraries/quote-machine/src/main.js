@@ -30,21 +30,21 @@ const changeQuote = (response) => {
         store.dispatch(setQuote(response.quote))
     }
 
-const requestQuote = (fetchQuote, params = {}) => {
+const requestQuote = (fetchQuote, timeToWait, params = {}) => {
     showQuote()
     setTimeout( () => {
         fetchQuote((msg) => store.dispatch(log(msg)), params).then(changeQuote)
-    }, 500 ) //to prevent the quote from being changed while vanishing
+    }, timeToWait ) //to prevent the quote from being changed while vanishing
         interval.reset();
     }
 
 
 export default function Main(props) {
     useEffect(() => {
-        requestQuote(props.fetchQuote);
+        requestQuote(props.fetchQuote, 0);
         interval = new ChangeQuoteInterval(() => {
             store.dispatch(log('Triggered interval'));
-            requestQuote(props.fetchQuote);
+            requestQuote(props.fetchQuote, 0);
         })
     }, [])
 
@@ -56,7 +56,7 @@ export default function Main(props) {
         return (
             <div>
                 <StatusAlert code={status.code} showError={visual.showError}/>
-                <QuoteBox quote={quote} showQuote={visual.showQuote} requestQuote={(param) => requestQuote(props.fetchQuote, param)} />
+                <QuoteBox quote={quote} showQuote={visual.showQuote} requestQuote={(param) => requestQuote(props.fetchQuote, props.waitTime, param)} />
                 <Debug
                     logs={debug.logs}
                     changeStatus={changeStatus}

@@ -17,7 +17,7 @@ import Main from './main'
 
 ReactDOM.render(
     <Provider store={store}>
-        <Main fetchQuote={fetchFromQuotable}/>
+        <Main fetchQuote={fetchFromQuotable} waitTime={500}/>
     </Provider>,
     document.getElementById('root')
 );
