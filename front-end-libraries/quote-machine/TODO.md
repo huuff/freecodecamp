@@ -4,7 +4,6 @@
 * Change arrow icon when uncollapsed
 
 ## Alert
-* Maybe add dismiss button?
 
 ## QoL
 * Repeat button, for when you miss a quote
@@ -24,10 +23,11 @@
 
 ## Testing
 * Test the fade transition? Is it even possible?
-* Test that the alert appears on an error
+* Test that the alert appears when two quotes are equal
+* Test that the alert appears on any error
 * Test that the alert can be closed (when I implement it)
 
-## Dreams
+## Features
 * Add quotes to favorites
 * Add sentiment analysis to check if quote is happy or not and change background accordingly
 * Make my own backend for it or maybe use the one from quotable but deploy it locally

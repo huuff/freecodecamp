@@ -36,7 +36,7 @@ export const StatusAlert = (props) => {
                         style={{minWidth: "60%"}}
                     >
                         {STATUS_STRING[props.code]}
-                        <button className="ms-auto btn btn-danger">
+                        <button className="ms-auto btn btn-danger" onClick={() => showError(false)}>
                             <FontAwesomeIcon icon={faTimes}/>
                         </button>
                     </div>
