@@ -27,6 +27,9 @@
 * Test that the alert appears on any error
 * Test that the alert can be closed (when I implement it)
 
+## Refactoring
+* Remove all `store.dispatch` and similar and use more idiomatic Redux
+
 ## Features
 * Add quotes to favorites
 * Add sentiment analysis to check if quote is happy or not and change background accordingly

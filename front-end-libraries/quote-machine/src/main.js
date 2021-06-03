@@ -3,13 +3,15 @@
 import React, { useEffect } from "react";
 import _ from "lodash";
 
-import Debug from "./debug.js";
+// Redux actions
 import { log } from "./debug"
+import { setQuote } from './quote-slice'
+
+import Debug from "./debug.js";
 import QuoteBox from "./quote-box.js";
 import {StatusAlert, changeStatus} from "./status.js";
 
 import store from './store.js';
-import { setQuote } from './quote-slice';
 
 import { useSelector } from 'react-redux'
 import { showError, showQuote } from './visual';
@@ -17,54 +19,74 @@ import { showError, showQuote } from './visual';
 import ChangeQuoteInterval from './interval'
 import { fakeInterval } from './interval'
 
+import { connect } from 'react-redux'
+
 var interval = fakeInterval;
 
-const changeQuote = (response) => {
-    const previousQuote = store.getState().quote;
+export class Main extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.requestQuote = this.requestQuote.bind(this)
+        this.changeQuote = this.changeQuote.bind(this)
+    }
+
+    componentDidMount() {
+        this.requestQuote();
+        interval = new ChangeQuoteInterval(() => {
+            this.props.log('Triggered interval');
+            this.requestQuote();
+        })
+
+    }
+    changeQuote(response) {
+        const previousQuote = store.getState().quote; //get rid of this
 
         if (_.isEqual(previousQuote, response)) {
-            store.dispatch(log("Unable to find quote matching criteria"))
+            this.props.log("Unable to find quote matching criteria")
             changeStatus("FETCHED_SAME");
         } else {
             changeStatus("OK");
         }
 
-        store.dispatch(setQuote(response))
+        this.props.setQuote(response)
     }
 
-const requestQuote = (fetchQuote, timeToWait, params = {}) => {
-    showQuote()
-    setTimeout( () => {
-        fetchQuote((msg) => store.dispatch(log(msg)), params).then(changeQuote)
-    }, timeToWait ) //to prevent the quote from being changed while vanishing
+    requestQuote(params = {}) {
+        showQuote()
+        setTimeout( () => {
+            this.props.fetchQuote(this.props.log, params).then(this.changeQuote)
+        }, this.props.waitTime ) //to prevent the quote from being changed while vanishing
         interval.reset();
     }
 
-
-export default function Main(props) {
-    useEffect(() => {
-        requestQuote(props.fetchQuote, 0);
-        interval = new ChangeQuoteInterval(() => {
-            store.dispatch(log('Triggered interval'));
-            requestQuote(props.fetchQuote, props.waitTime);
-        })
-    }, [])
-
-    const status = useSelector((state) => state.status)
-    const quote = useSelector((state) => state.quote)
-    const visual = useSelector((state) => state.visual)
-    const debug = useSelector((state) => state.debug)
-
+    render() {
         return (
             <div>
-                <StatusAlert code={status.code} showError={visual.showError}/>
-                <QuoteBox quote={quote} showQuote={visual.showQuote} requestQuote={(param) => requestQuote(props.fetchQuote, props.waitTime, param)} />
+                <StatusAlert
+                    code={this.props.status.code}
+                    showError={this.props.visual.showError}
+                />
+                <QuoteBox
+                    quote={this.props.quote}
+                    showQuote={this.props.visual.showQuote}
+                    requestQuote={this.requestQuote} />
                 <Debug
-                    logs={debug.logs}
-                    changeStatus={changeStatus}
-                    status={status}
-                    visual={visual}
+                    logs={this.props.debug.logs}
+                    changeStatus={this.props.changeStatus}
+                    status={this.props.status}
+                    visual={this.props.visual}
                 />
             </div>
         );
+    }
 }
+
+const mapStateToProps = (state) => ({
+    status: state.status,
+    quote: state.quote,
+    visual: state.visual,
+    debug: state.debug
+})
+
+export default connect(mapStateToProps, { log, setQuote })(Main)
