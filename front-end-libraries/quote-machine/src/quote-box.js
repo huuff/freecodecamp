@@ -47,7 +47,7 @@ export default function QuoteBox(props) {
                         Random quote
                     </button>
                 </div>
-                <div>
+                <div data-testid="tags-container">
                     {
                         props.quote.tags.map((tag, index) => (
                             <a
