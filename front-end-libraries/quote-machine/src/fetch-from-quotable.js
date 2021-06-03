@@ -13,14 +13,12 @@ export default function fetchFromQuotable(log, params) {
     })
         .then(res => res.json())
         .then(res => {
-          log(JSON.stringify(res));
-          return {
-            quote: {
+            log(JSON.stringify(res));
+            return {
                 text: res.content,
                 author: res.author,
                 authorSlug: res.authorSlug,
                 tags: res.tags,
-            },
-          };
+            };
         })
 }

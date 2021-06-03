@@ -27,7 +27,7 @@ const changeQuote = (response) => {
             changeStatus("OK");
         }
 
-        store.dispatch(setQuote(response.quote))
+        store.dispatch(setQuote(response))
     }
 
 const requestQuote = (fetchQuote, timeToWait, params = {}) => {
@@ -44,7 +44,7 @@ export default function Main(props) {
         requestQuote(props.fetchQuote, 0);
         interval = new ChangeQuoteInterval(() => {
             store.dispatch(log('Triggered interval'));
-            requestQuote(props.fetchQuote, 0);
+            requestQuote(props.fetchQuote, props.waitTime);
         })
     }, [])
 

@@ -23,7 +23,7 @@ export default function QuoteBox(props) {
                             props.quote.text !== ""
                                 ? <blockquote className="blockquote">
                                       <p id="text" data-testid="quote-text">"{props.quote.text}"</p>
-                                      <footer className="blockquote-footer"><cite id="author">{props.quote.author}</cite></footer>
+                                      <footer className="blockquote-footer"><cite id="author" data-testid="quote-author">{props.quote.author}</cite></footer>
                                   </blockquote>
                             : <div className="d-flex justify-content-center my-5">
                                   <div className = "spinner-border text-primary" style={{width: "3rem", height: "3rem"}}></div>

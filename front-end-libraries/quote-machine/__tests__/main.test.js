@@ -19,30 +19,51 @@ import 'babel-polyfill'
 
 const randomString = () => Math.random().toString(36).substr(2, 5)
 
-const mockFetch = jest.fn(() => Promise.resolve({
-    quote: {
-        text: randomString(),
-        author: randomString(),
-        tags: [],
-    },
-}))
+const mockFetch = jest.fn((log, params) => {
+  const randomAuthor = randomString()
+  const randomQuote = {
+      text: randomString(),
+      author: randomAuthor,
+      authorSlug: randomAuthor,
+      tags: [],
+  }
+
+  return Promise.resolve(Object.assign({}, randomQuote, params))
+})
 
 test('changes quote randomly', async () => {
-    render(
-      <Provider store={store}>
-            <Main fetchQuote={mockFetch} waitTime={0}/>
-        </Provider>
-    )
+  render(
+    <Provider store={store}>
+    <Main fetchQuote={mockFetch} waitTime={0}/>
+    </Provider>
+  )
 
-  const firstQuote = await screen.findByTestId("quote-text")
-  const firstQuoteText = firstQuote.textContent;
+  const firstQuoteText = (await screen.findByTestId("quote-text")).textContent
 
   fireEvent.click(screen.getByText("Random quote"))
   await waitForElementToBeRemoved(() => screen.queryByText(firstQuoteText))
 
-  const secondQuote = await screen.findByTestId("quote-text")
-  const secondQuoteText = secondQuote.textContent
+  const secondQuoteText = (await screen.findByTestId("quote-text")).textContent
 
   expect(secondQuoteText).not.toBe(firstQuoteText)
 })
 
+test('changes quote by same author', async () => {
+  render(
+    <Provider store={store}>
+    <Main fetchQuote={mockFetch} waitTime={0}/>
+    </Provider>
+  )
+
+  const firstQuoteAuthor = (await screen.findByTestId("quote-author")).textContent
+  const firstQuoteText = (await screen.findByTestId("quote-text")).textContent
+
+  fireEvent.click(screen.getByText("Quote from this author"))
+  await waitForElementToBeRemoved(() => screen.queryByText(firstQuoteText))
+
+  const secondQuoteText = (await screen.findByTestId("quote-text")).textContent
+  const secondQuoteAuthor = (await screen.findByTestId("quote-author")).textContent
+
+  expect(secondQuoteText).not.toBe(firstQuoteText)
+  expect(secondQuoteAuthor).toBe(firstQuoteAuthor)
+})
