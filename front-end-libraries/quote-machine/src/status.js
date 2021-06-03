@@ -6,6 +6,9 @@ import store from './store.js'
 import {setStatus} from './status-slice'
 import {showError} from './visual'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 export const STATUS_STRING = {
     OK: "This string shouldn't appear anywhere",
     FETCHED_SAME: "Oops! Seems like I wasn't able to retrieve a quote matching that criteria",
@@ -29,10 +32,13 @@ export const StatusAlert = (props) => {
                     mountOnEnter={true}
                 >
                     <div
-                        className="alert alert-danger position-fixed top-0 start-50 translate-middle-x"
+                        className="alert alert-danger position-fixed top-0 start-50 translate-middle-x d-flex align-items-baseline"
                         style={{minWidth: "60%"}}
                     >
                         {STATUS_STRING[props.code]}
+                        <button className="ms-auto btn btn-danger">
+                            <FontAwesomeIcon icon={faTimes}/>
+                        </button>
                     </div>
             </CSSTransition>)
 }

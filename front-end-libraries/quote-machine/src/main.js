@@ -20,7 +20,9 @@ import { fakeInterval } from './interval'
 var interval = fakeInterval;
 
 const changeQuote = (response) => {
-        if (_.isEqual(store.getState().quote, response.quote)) {
+    const previousQuote = store.getState().quote;
+
+        if (_.isEqual(previousQuote, response)) {
             store.dispatch(log("Unable to find quote matching criteria"))
             changeStatus("FETCHED_SAME");
         } else {

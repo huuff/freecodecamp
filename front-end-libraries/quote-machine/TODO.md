@@ -23,9 +23,9 @@
 * Find a way to get the quote box to have some minimum height
 
 ## Testing
-* Test all change quote buttons? I don't know if there's something to get from it
 * Test the fade transition? Is it even possible?
 * Test that the alert appears on an error
+* Test that the alert can be closed (when I implement it)
 
 ## Dreams
 * Add quotes to favorites

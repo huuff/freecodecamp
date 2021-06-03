@@ -3,6 +3,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import store from './store'
 
+const ERROR_DURATION = 5000
+const QUOTE_REFRESH_TIME = 1000
+
 export const visualSlice = createSlice({
     name: 'visual',
     initialState: {
@@ -21,12 +24,12 @@ export const visualSlice = createSlice({
 
 export default visualSlice.reducer
 
-export function showError() {
-    store.dispatch(visualSlice.actions.setShowError(true))
-    setTimeout(() => store.dispatch(visualSlice.actions.setShowError(false)), 5000)
+export function showError(show = true) {
+    store.dispatch(visualSlice.actions.setShowError(show))
+    setTimeout(() => store.dispatch(visualSlice.actions.setShowError(false)), ERROR_DURATION)
 }
 
 export function showQuote() {
     store.dispatch(visualSlice.actions.setShowQuote(false))
-    setTimeout(() => store.dispatch(visualSlice.actions.setShowQuote(true)), 1000)
+    setTimeout(() => store.dispatch(visualSlice.actions.setShowQuote(true)), QUOTE_REFRESH_TIME)
 }
