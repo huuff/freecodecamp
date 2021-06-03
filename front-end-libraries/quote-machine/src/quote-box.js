@@ -4,9 +4,6 @@ import { CSSTransition } from 'react-transition-group';
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function QuoteBox(props) {
-    const quote = useSelector((state) => state.quote);
-    const showQuote = (useSelector((state) => state.visual)).showQuote;
-    const dispatch = useDispatch()
 
     return (
         <div id="quote-box" className="row min-vh-100 justify-content-center align-items-center">
@@ -17,16 +14,16 @@ export default function QuoteBox(props) {
                 <div className="card-body">
 
                     <CSSTransition
-                        in={showQuote}
+                        in={props.showQuote}
                         timeout={1000}
                         classNames="fade-effect"
                         appear={true}
                     >
                         {
-                            quote.text !== ""
+                            props.quote.text !== ""
                                 ? <blockquote className="blockquote">
-                                      <p id="text">"{quote.text}"</p>
-                                      <footer className="blockquote-footer"><cite id="author">{quote.author}</cite></footer>
+                                      <p id="text">"{props.quote.text}"</p>
+                                      <footer className="blockquote-footer"><cite id="author">{props.quote.author}</cite></footer>
                                   </blockquote>
                             : <div className="d-flex justify-content-center my-5">
                                   <div className = "spinner-border text-primary" style={{width: "3rem", height: "3rem"}}></div>
@@ -36,10 +33,10 @@ export default function QuoteBox(props) {
                     </CSSTransition>
                 </div>
                 <div className="card-footer">
-                    <Tweet quote={quote.text} author={quote.author} />
+                    <Tweet quote={props.quote.text} author={props.quote.author} />
                     <button
                         id="author-quote"
-                        onClick={() => props.requestQuote({ 'author': quote.authorSlug })}
+                        onClick={() => props.requestQuote({ 'author': props.quote.authorSlug })}
                         className="btn btn-primary float-end ms-2">
                         Quote from this author
                     </button>
@@ -52,7 +49,7 @@ export default function QuoteBox(props) {
                 </div>
                 <div>
                     {
-                        quote.tags.map((tag, index) => (
+                        props.quote.tags.map((tag, index) => (
                             <a
                                 className="me-3 link-primary"
                                 key={tag+index}

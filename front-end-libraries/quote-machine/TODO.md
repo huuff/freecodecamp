@@ -7,7 +7,8 @@
 * Add bootstrap popover to twitter when trying to tweet something longer than 140 characters
 * Debug: Change any value directly in the window. Wouldn't it be cool?
 * Debug: Collapse fetch responses by default and allow expanding them
+* Debug: Change arrow icon when uncollapsed
 * Alert: Maybe add dismiss button?
-* Alert: Maybe extract it to its own component
 * Repeat button, for when you miss a quote
 * The first quote appears weirdly, fix it.
+* Test components

@@ -10,7 +10,7 @@ export const quoteSlice = createSlice({
             tags: [],
     },
     reducers: {
-        changeQuote: (state, action) => {
+        setQuote: (state, action) => {
             state.text = action.payload.text;
             state.author = action.payload.author;
             state.authorSlug = action.payload.authorSlug;
@@ -19,5 +19,5 @@ export const quoteSlice = createSlice({
     },
 })
 
-export const { changeQuote } = quoteSlice.actions
+export const { setQuote } = quoteSlice.actions
 export default quoteSlice.reducer

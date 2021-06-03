@@ -9,101 +9,67 @@ import 'bootstrap';
 import './main.scss';
 
 import Debug from "./debug.js";
+import { log } from "./debug"
 import QuoteBox from "./quote-box.js";
 import fetchQuote from "./fetch-quote.js";
-import StatusAlert from "./status.js";
+import {StatusAlert, changeStatus} from "./status.js";
 
 // Redux
 import store from './store.js';
 import { Provider } from 'react-redux';
-import {changeQuote} from './quote-slice';
-import {setStatus, setRecentError} from './status-slice'
+import { setQuote } from './quote-slice';
 
+import { useSelector } from 'react-redux'
 import { showError, showQuote } from './visual';
 
+import ChangeQuoteInterval from './interval'
+import { fakeInterval } from './interval'
 
-const REFRESH_TIME = 1000;
-const AUTO_CHANGE_TIME = 15000;
+var interval = fakeInterval;
 
-class ChangeInterval {
-    constructor(func, time) {
-        this.func = func;
-        this.time = time;
-        this.intervalId = setInterval(this.func, this.time);
-    }
-
-    reset() {
-        clearInterval(this.intervalId);
-        this.intervalId = setInterval(this.func, this.time);
-    }
-
-}
-
-class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            interval: new ChangeInterval(() => {
-                this.log('Triggered interval');
-                this.requestQuote({});
-            }, AUTO_CHANGE_TIME),
-            logs: [],
-        };
-
-        this.requestQuote = this.requestQuote.bind(this)
-        this.changeQuote = this.changeQuote.bind(this)
-        this.setStatus = this.setStatus.bind(this)
-        this.log = this.log.bind(this);
-    }
-
-    componentDidMount() {
-        this.requestQuote({});
-    }
-
-    changeQuote(response) {
+const changeQuote = (response) => {
         if (_.isEqual(store.getState().quote, response.quote)) {
-            this.log("Unable to find quote matching criteria");
-            this.setStatus("FETCHED_SAME");
+            store.dispatch(log("Unable to find quote matching criteria"))
+            changeStatus("FETCHED_SAME");
         } else {
-            this.setStatus("OK");
+            changeStatus("OK");
         }
 
-        store.dispatch(changeQuote(response.quote))
+        store.dispatch(setQuote(response.quote))
     }
-
-    setStatus(code) {
-        store.dispatch(setStatus({ code: code}))
-
-        if (code !== "OK") {
-            showError()
-        }
-    }
-
-    requestQuote(params) {
+const requestQuote = (params) => {
         showQuote()
-        setTimeout( () =>  fetchQuote(this.changeQuote, this.log, params), 500 ) //to prevent the quote from being changed while vanishing
-        this.state.interval.reset();
+        setTimeout( () =>  fetchQuote(changeQuote, (msg) => store.dispatch(log(msg)), params), 500 ) //to prevent the quote from being changed while vanishing
+        interval.reset();
     }
 
-    log(message) {
-        this.setState((state) => ({
-            logs: [...state.logs].concat(message)
-        }));
-    }
 
-    render() {
+const Main = (props) => {
+    useEffect(() => {
+        requestQuote({});
+        interval = new ChangeQuoteInterval(() => {
+            store.dispatch(log('Triggered interval'));
+            requestQuote({});
+        })
+    }, [])
+
+    const status = useSelector((state) => state.status)
+    const quote = useSelector((state) => state.quote)
+    const visual = useSelector((state) => state.visual)
+    const debug = useSelector((state) => state.debug)
+
         return (
             <div>
                 <StatusAlert />
-                <QuoteBox requestQuote={this.requestQuote} />
+                <QuoteBox quote={quote} showQuote={visual.showQuote} requestQuote={requestQuote} />
                 <Debug
-                    logs={this.state.logs}
-                    interval={this.state.interval}
-                    setStatus={this.setStatus}
+                    logs={debug.logs}
+                    changeStatus={changeStatus}
+                    status={status}
+                    visual={visual}
                 />
             </div>
         );
-    }
 }
 
 
