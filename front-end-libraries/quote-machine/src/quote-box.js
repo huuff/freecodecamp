@@ -22,7 +22,7 @@ export default function QuoteBox(props) {
                         {
                             props.quote.text !== ""
                                 ? <blockquote className="blockquote">
-                                      <p id="text">"{props.quote.text}"</p>
+                                      <p id="text" data-testid="quote-text">"{props.quote.text}"</p>
                                       <footer className="blockquote-footer"><cite id="author">{props.quote.author}</cite></footer>
                                   </blockquote>
                             : <div className="d-flex justify-content-center my-5">

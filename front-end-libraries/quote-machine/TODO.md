@@ -13,3 +13,4 @@
 * The first quote appears weirdly, fix it.
 * Test components
 * When an error triggers and then the quote is changed, the text "this shouldn't appear anywhere" appears in the alert. Fix that liar.
+* Is babel configuration needed both in webpack config and in babel config?
