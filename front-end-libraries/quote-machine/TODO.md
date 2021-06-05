@@ -26,10 +26,9 @@
 * Test the fade transition? Is it even possible?
 * Test that the alert appears when two quotes are equal
 * Test that the alert appears on any error
-* Test that the alert can be closed (when I implement it)
+* Test that the alert can be closed 
 
 ## Refactoring
-* Remove all `store.dispatch` and similar and use more idiomatic Redux
 
 ## Features
 * Add quotes to favorites

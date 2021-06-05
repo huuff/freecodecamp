@@ -10,14 +10,14 @@ import '@testing-library/jest-dom/extend-expect'
 
 // Redux
 import { Provider } from 'react-redux'
-import store from '../src/store'
+import store, { resetAction } from '../src/store'
 
-// Async tests don't work without this
-// Maybe I should put in jest.init.js
-// Check [this issue](https://github.com/facebook/jest/issues/3126#issuecomment-345949328)
-import 'babel-polyfill'
+import '../setupTests.js'
 
-afterEach(cleanup)
+afterEach(() => {
+  cleanup
+  store.dispatch(resetAction())
+})
 
 const randomString = () => Math.random().toString(36).substr(2, 5)
 
