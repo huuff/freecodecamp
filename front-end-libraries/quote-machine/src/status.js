@@ -21,10 +21,11 @@ export const StatusAlert = (props) => {
                 >
                     <div
                         className="alert alert-danger position-fixed top-0 start-50 translate-middle-x d-flex align-items-baseline"
+                        data-testid="status-alert"
                         style={{minWidth: "60%"}}
                     >
                         {STATUS_STRING[props.code]}
-                        <button className="ms-auto btn btn-danger" onClick={() => props.setShowError(false)}>
+                        <button className="ms-auto btn btn-danger" data-testid="close-alert" onClick={() => props.setShowError(false)}>
                             <FontAwesomeIcon icon={faTimes}/>
                         </button>
                     </div>

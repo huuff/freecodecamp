@@ -33,13 +33,14 @@ export class Main extends React.Component {
         this.requestQuote();
         interval = new ChangeQuoteInterval(() => {
             this.props.log('Triggered interval');
+            console.log('Triggered interval')
             this.requestQuote();
         })
 
     }
 
     changeQuote(response) {
-        const previousQuote = this.props.quote; //get rid of this
+        const previousQuote = this.props.quote;
 
         if (_.isEqual(previousQuote, response)) {
             this.props.log("Unable to find quote matching criteria")

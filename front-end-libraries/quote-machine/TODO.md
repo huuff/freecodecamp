@@ -1,13 +1,16 @@
 ## Debug
 * Change any value directly in the window. Wouldn't it be cool?
 * Collapse fetch responses by default and allow expanding them
-* Change arrow icon when uncollapsed
 
 ## Alert
 
 ## QoL
 * Repeat button, for when you miss a quote
 * Use nix
+
+## Aesthetics
+* The debug uncollapse button looks terrible when the screen is small, it's badly aligned.
+* Change arrow icon when debug is uncollapsed
 
 ## Twitter
 * Add bootstrap popover to twitter when trying to tweet something longer than 140 characters
@@ -20,13 +23,10 @@
 * Currently the refresh time is repeated in 3 different places, find some way to DRY it. Note: It seems like it's real easy to share a variable between javascript and sass, however, I can't do it. Maybe I could define the animations using css and share it so?
 * Is babel configuration needed both in webpack config and in babel config?
 * Find a way to get the quote box to have some minimum height
-* Maybe I don't need babel-polyfill anymore
 
 ## Testing
-* Test the fade transition? Is it even possible?
-* Test that the alert appears when two quotes are equal
-* Test that the alert appears on any error
-* Test that the alert can be closed 
+* Test the fade transition? Is it even possible? (I'm now sure it is possible)
+* I don't know if I should test the debug
 
 ## Refactoring
 

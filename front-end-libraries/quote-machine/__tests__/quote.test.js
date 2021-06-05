@@ -10,12 +10,15 @@ import '@testing-library/jest-dom/extend-expect'
 
 // Redux
 import { Provider } from 'react-redux'
-import store, { resetAction } from '../src/store'
+import { newStore } from '../src/store'
 
-afterEach(() => {
-  cleanup
-  store.dispatch(resetAction())
+var store;
+
+beforeEach(() => {
+  store = newStore()
 })
+
+afterEach(() => cleanup)
 
 const randomString = () => Math.random().toString(36).substr(2, 5)
 
