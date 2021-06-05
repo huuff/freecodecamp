@@ -1,5 +1,3 @@
-import { createSlice } from '@reduxjs/toolkit'
-
 const AUTO_CHANGE_TIME = 15000;
 
 export default class ChangeQuoteInterval {

@@ -11,9 +11,6 @@ export const statusSlice = createSlice({
             reducer: (state, action) => {
                 state.code = action.payload
             },
-            prepate: (code) => {
-                return { payload: {code} }
-            }
         }
     }
 })
