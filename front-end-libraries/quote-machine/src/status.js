@@ -2,8 +2,6 @@ import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useSelector} from 'react-redux'
 
-import store from './store.js'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 

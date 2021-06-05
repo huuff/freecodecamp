@@ -12,9 +12,6 @@ import Debug from "./debug.js";
 import QuoteBox from "./quote-box.js";
 import {StatusAlert} from "./status.js";
 
-import store from './store.js';
-
-import { useSelector } from 'react-redux'
 import { setShowError, setShowQuote } from './visual';
 
 import ChangeQuoteInterval from './interval'
@@ -42,7 +39,7 @@ export class Main extends React.Component {
     }
 
     changeQuote(response) {
-        const previousQuote = store.getState().quote; //get rid of this
+        const previousQuote = this.props.quote; //get rid of this
 
         if (_.isEqual(previousQuote, response)) {
             this.props.log("Unable to find quote matching criteria")
