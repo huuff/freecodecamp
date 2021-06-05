@@ -68,6 +68,7 @@ export class Main extends React.Component {
                 <StatusAlert
                     code={this.props.status.code}
                     showError={this.props.visual.showError}
+                    setShowError={this.props.setShowError}
                 />
                 <QuoteBox
                     quote={this.props.quote}
@@ -91,4 +92,4 @@ const mapStateToProps = (state) => ({
     debug: state.debug
 })
 
-export default connect(mapStateToProps, { log, setQuote, setStatus })(Main)
+export default connect(mapStateToProps, { log, setQuote, setStatus, setShowError })(Main)

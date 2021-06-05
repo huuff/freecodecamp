@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { setShowError } from './visual'
 
 export const statusSlice = createSlice({
@@ -7,23 +7,23 @@ export const statusSlice = createSlice({
         code: "OK",
     },
     reducers: {
-        setStatus: (state, action) => {
-            state.code = action.payload.code
-        },
+        setStatus: {
+            reducer: (state, action) => {
+                state.code = action.payload
+            },
+            prepate: (code) => {
+                return { payload: {code} }
+            }
+        }
     }
 })
 
-export const setStatus = (code) => {
+export const setStatus = createAsyncThunk("status/setStatusAndError", async (code, thunkAPI) => {
     if (code !== "OK") {
-        setShowError(true)
+        thunkAPI.dispatch(setShowError())
     }
 
-    return {
-        type: "SET_STATUS",
-        payload: {
-            code: code
-        }
-    }
-}
+    thunkAPI.dispatch(statusSlice.actions.setStatus(code))
+})
 
 export default statusSlice.reducer

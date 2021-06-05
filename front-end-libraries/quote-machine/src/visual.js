@@ -1,6 +1,6 @@
 /* I feel like there's something wrong to needing state for managing animations and effects
  * but I don't find a better way of doing it */
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import store from './store'
 
 const ERROR_DURATION = 5000
@@ -24,10 +24,11 @@ export const visualSlice = createSlice({
 
 export default visualSlice.reducer
 
-export function setShowError(show = true) {
-    store.dispatch(visualSlice.actions.setShowError(show))
-    setTimeout(() => store.dispatch(visualSlice.actions.setShowError(false)), ERROR_DURATION)
-}
+export const setShowError = createAsyncThunk("visual/setShowErrorTemporarily", async (show = true, thunkAPI) => {
+    thunkAPI.dispatch(visualSlice.actions.setShowError(show))
+    if (show)
+        setTimeout(() => thunkAPI.dispatch(visualSlice.actions.setShowError(false)), ERROR_DURATION)
+})
 
 export function showQuote() {
     store.dispatch(visualSlice.actions.setShowQuote(false))
