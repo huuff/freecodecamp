@@ -24,7 +24,7 @@ export const visualSlice = createSlice({
 
 export default visualSlice.reducer
 
-export function showError(show = true) {
+export function setShowError(show = true) {
     store.dispatch(visualSlice.actions.setShowError(show))
     setTimeout(() => store.dispatch(visualSlice.actions.setShowError(false)), ERROR_DURATION)
 }

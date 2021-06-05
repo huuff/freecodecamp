@@ -15,7 +15,7 @@ import {StatusAlert} from "./status.js";
 import store from './store.js';
 
 import { useSelector } from 'react-redux'
-import { showError, showQuote } from './visual';
+import { setShowError, showQuote } from './visual';
 
 import ChangeQuoteInterval from './interval'
 import { fakeInterval } from './interval'

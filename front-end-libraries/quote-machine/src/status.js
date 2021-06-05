@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 import { useSelector} from 'react-redux'
 
 import store from './store.js'
-import {showError} from './visual'
+import {setShowError} from './visual'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -27,7 +27,7 @@ export const StatusAlert = (props) => {
                         style={{minWidth: "60%"}}
                     >
                         {STATUS_STRING[props.code]}
-                        <button className="ms-auto btn btn-danger" onClick={() => showError(false)}>
+                        <button className="ms-auto btn btn-danger" onClick={() => setShowError(false)}>
                             <FontAwesomeIcon icon={faTimes}/>
                         </button>
                     </div>
