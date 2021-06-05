@@ -12,7 +12,8 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
-    }
+    },
+    "setupFilesAfterEnv": ["./setupTests.js"]
   },
   "author": "Haf",
   "license": "ISC",
@@ -26,7 +27,6 @@
     "autoprefixer": "^10.2.6",
     "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.2",
-    "babel-polyfill": "^6.26.0",
     "bootstrap": "^5.0.1",
     "css-loader": "^5.2.6",
     "html-webpack-plugin": "^5.3.1",

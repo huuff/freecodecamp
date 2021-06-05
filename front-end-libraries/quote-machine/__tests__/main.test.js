@@ -12,8 +12,6 @@ import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
 import store, { resetAction } from '../src/store'
 
-import '../setupTests.js'
-
 afterEach(() => {
   cleanup
   store.dispatch(resetAction())
