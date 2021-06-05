@@ -15,7 +15,7 @@ import {StatusAlert} from "./status.js";
 import store from './store.js';
 
 import { useSelector } from 'react-redux'
-import { setShowError, showQuote } from './visual';
+import { setShowError, setShowQuote } from './visual';
 
 import ChangeQuoteInterval from './interval'
 import { fakeInterval } from './interval'
@@ -55,7 +55,7 @@ export class Main extends React.Component {
     }
 
     requestQuote(params = {}) {
-        showQuote()
+        this.props.setShowQuote()
         setTimeout( () => {
             this.props.fetchQuote(this.props.log, params).then(this.changeQuote)
         }, this.props.waitTime ) //to prevent the quote from being changed while vanishing
@@ -92,4 +92,4 @@ const mapStateToProps = (state) => ({
     debug: state.debug
 })
 
-export default connect(mapStateToProps, { log, setQuote, setStatus, setShowError })(Main)
+export default connect(mapStateToProps, { log, setQuote, setStatus, setShowError, setShowQuote })(Main)
