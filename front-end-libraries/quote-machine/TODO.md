@@ -23,6 +23,7 @@
 * Currently the refresh time is repeated in 3 different places, find some way to DRY it. Note: It seems like it's real easy to share a variable between javascript and sass, however, I can't do it. Maybe I could define the animations using css and share it so?
 * Is babel configuration needed both in webpack config and in babel config?
 * Find a way to get the quote box to have some minimum height
+* Maybe dispatching the effects (setting show to true, then to false) using a thunk is not the correct way and a hack? Maybe I should do it by wrapping the dispatcher in some custom function?
 
 ## Testing
 * Test the fade transition? Is it even possible? (I'm now sure it is possible)
