@@ -38,9 +38,9 @@ const valToString = (val) => {
 export default function Debug(props) {
     return (
         <div className="card fixed-bottom shadow w-25 ms-3">
-            <div className="card-header row align-items-center">
+            <div className="card-header row">
                 <h5 className="col-10">Debug</h5>
-                <button id="toggle-debug" className="float-end col btn" data-bs-toggle="collapse" href="#debug-body">
+                <button id="toggle-debug" className="float-end col-2 btn" data-bs-toggle="collapse" href="#debug-body">
                     <FontAwesomeIcon icon={faArrowUp}/>
                 </button>
             </div>

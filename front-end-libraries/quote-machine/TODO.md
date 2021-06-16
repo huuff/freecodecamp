@@ -9,7 +9,6 @@
 * Use nix
 
 ## Aesthetics
-* The debug uncollapse button looks terrible when the screen is small, it's badly aligned.
 * Change arrow icon when debug is uncollapsed
 
 ## Twitter
