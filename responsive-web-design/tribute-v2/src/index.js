@@ -1,2 +1,2 @@
 import './styles.css'
-//import './assets/images/terry_davis.jpg'
+import './assets/images/terry_davis.jpg'
