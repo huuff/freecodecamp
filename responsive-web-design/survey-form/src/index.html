@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <main class="d-flex flex-column align-items-center">
+      <header class="mt-2 mb-4">
+        <h1>Standard form</h1>
+      </header>
+
+      <form class="border border-2 border-dark rounded-3 shadow px-5 py-3 auto-width">
+
+        <div id="main-form">
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="name-input" placeholder="placeholder">
+            <label for="name-input" class="form-label">Full name</label>
+          </div>
+
+          <div class="form-floating mb-2">
+            <input type="email" class="form-control" id="email-input" placeholder="example@example.org">
+            <label for="email-input" class="form-label">Email address</label>
+          </div>
+
+          <div class="mb-2">
+            <div class="form-floating">
+              <input type="password" class="form-control" id="password-input" placeholder="password">
+              <label for="password-input" class="form-label">Password</label>
+            </div>
+            <div class="form-text">
+              Only for illustrative purposes
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label for="birth-date">Birth date</label>
+            <input type="date" id="birth-date">
+          </div>
+        </div>
+
+        <div id="favourite-stuff" class="my-4">
+          <div class="mb-2">
+            <h5>Favourite color</h5>
+            <div class="form-check"/>
+              <input class="form-check-input" type="checkbox" value="red" id="red">
+              <label class="form-check-label" for="red">Red</label>
+            </div>
+            <div class="form-check"/>
+              <input class="form-check-input" type="checkbox" value="green" id="green">
+              <label class="form-check-label" for="green">Green</label>
+            </div>
+            <div class="form-check"/>
+              <input class="form-check-input" type="checkbox" value="blue" id="blue">
+              <label class="form-check-label" for="blue">Blue</label>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <h5>Favourite city</h5>
+            <div class="form-check"/>
+              <input class="form-check-input" type="radio" value="naypyidaw" id="naypyidaw" name="favourite-city">
+              <label class="form-check-label" for="naypyidaw">Naypyidaw</label>
+            </div>
+            <div class="form-check"/>
+              <input class="form-check-input" type="radio" value="ouagadougou" id="ouagadougou" name="favourite-city">
+              <label class="form-check-label" for="ouagadougou">Ougadougou</label>
+            </div>
+            <div class="form-check"/>
+              <input class="form-check-input" type="radio" value="antananarivo" id="antananarivo" name="favourite-city">
+              <label class="form-check-label" for="antananarivo">Antananarivo</label>
+            </div>
+            <div class="form-check"/>
+              <input class="form-check-input" type="radio" value="ulaanbaatar" id="ulaanbaatar" name="favourite-city">
+              <label class="form-check-label" for="ulaanbaatar">Ulaanbaatar</label>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <select class="form-select" id="favourite-animal">
+              <option selected>Favourite animal</option>
+              <option value="1">Cats</option>
+              <option value="2">Dogs</option>
+              <option value="3">Capybaras</option>
+              <option value="4">Axolotls</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="my-4">
+          <div class="mb-2">
+            <label for="happiness" class="form-label">How happy are you?</label>
+            <input type="range" class="form-range" id="happiness">
+          </div>
+          <div class="form-floating mb-2">
+            <textarea class="form-control" placeholder="Tell me" style="height: 150px" id="improve"></textarea>
+            <label for="improve">How would you improve the world?</label>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
