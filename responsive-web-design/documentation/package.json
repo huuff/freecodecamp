@@ -1,0 +1,31 @@
+{
+  "name": "documentation",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "start": "webpack serve --mode development --open google-chrome-stable"
+  },
+  "author": "Haf",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "css-loader": "^5.2.6",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "postcss-loader": "^6.1.0",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.2.0",
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3"
+  }
+}

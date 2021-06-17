@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>
+      Technical Documentation
+    </title>
+  </head>
+
+  <body class="bg-secondary">
+    <header class="bg-tertiary">
+      <h1 class="text-5xl text-center mb-5 text-gray-200">Coding in Latin</h1>
+    </header>
+    <div class="grid grid-cols-16">
+      <nav class="hidden sm:block sm:col-span-2 bg-primary">
+        <div class="flex flex-col">
+          <h3 class="bg-tertiary text-2xl text-center text-gray-300">Navigation</h3>
+          <a href="#section1">Section 1</a>
+          <a href="#section2">Section 2</a>
+          <a href="#section3">Section 3</a>
+          <a href="#section4">Section 4</a>
+          <a href="#section5">Section 5</a>
+        </div>
+      </nav>
+
+      <div class="hidden lg:block"> 
+      <!--This div is only here to take one column and make a space between main content and menu-->
+      </div>
+
+      <main class="col-span-16 sm:col-span-12 lg:col-span-10 bg-primary">
+        <section id="section1">
+          <header>
+            <h1 class="section-header">Section 1</h1>
+          </header>
+          <p>Donec non libero molestie metus vulputate rutrum. Nulla risus nisl, semper at porttitor ac, consectetur rutrum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+          posuere cubilia curae; Nulla quis ante nisl. Vestibulum tincidunt, sem eget euismod fermentum, ex dui ullamcorper tortor, at gravida dolor risus quis sapien. Mauris suscipit ultricies
+          urna, ut mollis odio. Proin lacinia luctus malesuada. Etiam volutpat ultrices ultrices. Phasellus in tempor sem. Cras quis ultrices arcu. Praesent dapibus elit nec est scelerisque
+          tristique. </p>
+          <p>Aliquam egestas nisi venenatis eros efficitur, sit amet sollicitudin augue sollicitudin. Vestibulum consectetur lectus nec risus varius auctor. Mauris rhoncus magna massa, non finibus
+          tortor facilisis eget. Vivamus eu nisl pulvinar, mollis nisi quis, accumsan augue. In tincidunt nibh eu augue laoreet consequat non nec odio. Praesent et eros id diam ultrices vehicula
+          id vel lectus. Suspendisse sit amet est condimentum, imperdiet lectus ut, commodo neque. Phasellus posuere, nulla vel porttitor efficitur, tortor dolor laoreet mi, sed faucibus felis
+          nulla in nisl. Etiam quis augue mauris. Nunc sit amet massa accumsan nulla volutpat dignissim at nec ante. Etiam et malesuada purus. Praesent sapien justo, mollis non mattis ac,
+          facilisis et nunc. In at tempus dui. </p>
+          <ol>
+            <li>Lorem</li>
+            <li>Ipsum</li>
+            <li>Dolor</li>
+            <li>Tremens</li>
+            <li>etc.</li>
+          </ol>
+
+          <code>
+            y = x + y;
+            x = y - x;
+            y = y - x;
+          </code>
+        </section>
+
+        <section class="main-section" id="section2">
+          <header>
+            <h1 class="section-header">Section 2</h1>
+          </header>
+          <p>Maecenas ac malesuada ex, at aliquet metus. Morbi pharetra magna ac tortor sagittis laoreet. Nam a est ac eros aliquam rutrum posuere quis lacus. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Nunc suscipit luctus rutrum. Morbi vulputate vitae lacus convallis egestas. Nulla dui diam, ultrices in pellentesque non, pharetra a felis.
+          Integer dictum justo ut dui euismod, at tincidunt augue suscipit. Aenean laoreet rhoncus ex, eu viverra erat cursus non. Vivamus posuere, arcu eget fermentum pulvinar, erat magna
+          sodales orci, ut malesuada lacus mi quis orci. Nam interdum nisi et arcu dictum iaculis. Nulla facilisi. Nullam felis magna, congue fringilla placerat quis, porta nec quam. Nam
+          efficitur elit at accumsan feugiat. </p>
+          <p>Vestibulum sed elementum odio. Phasellus a arcu ullamcorper, tempor nulla quis, vestibulum sem. Aenean pellentesque eros ac massa venenatis consequat. In id efficitur ipsum, sit amet
+          elementum urna. Maecenas lobortis leo eu odio fringilla placerat. Aenean varius erat id vehicula faucibus. Nunc a libero hendrerit, tempor leo eu, volutpat nulla. Maecenas posuere
+          dapibus arcu, ac vestibulum arcu aliquam eu. </p>
+
+          <code>
+            float Q_rsqrt( float number )
+            {
+            long i;
+            float x2, y;
+            const float threehalfs = 1.5F;
+
+            x2 = number * 0.5F;
+            y  = number;
+            i  = * ( long * ) &y;                       // evil floating point bit level hacking
+            i  = 0x5f3759df - ( i >> 1 );               // what the fuck? 
+            y  = * ( float * ) &i;
+            y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+            //	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+            return y;
+            }
+          </code>
+        </section>
+
+        <section class="main-section" id="section3">
+          <header>
+            <h1 class="section-header">Section 3</h1>
+          </header>
+          <p>Vestibulucim sed elementum odio. Phasellus a arcu ullamcorper, tempor nulla quis, vestibulum sem. Aenean pellentesque eros ac massa venenatis consequat. In id efficitur ipsum, sit amet
+          elementum urna. Maecenas lobortis leo eu odio fringilla placerat. Aenean varius erat id vehicula faucibus. Nunc a libero hendrerit, tempor leo eu, volutpat nulla. Maecenas posuere
+          dapibus arcu, ac vestibulum arcu aliquam eu. </p>
+          <p>Cras pharetra dapibus efficitur. Phasellus id urna nec massa tempor ultricies et sit amet purus. Nam hendrerit velit id arcu dapibus venenatis nec in dolor. Curabitur aliquet massa elit,
+          non ultricies quam aliquet eu. Morbi dapibus turpis rhoncus arcu sodales, vel luctus quam faucibus. Nam molestie vitae augue vitae gravida. Maecenas laoreet nunc ex, at dapibus sapien
+          tristique eu. Nulla mauris ipsum, vehicula et porta nec, tristique et diam. In ut elementum magna, et commodo odio. Quisque posuere augue et consequat gravida. Nunc sed porttitor nulla,
+          at porta est. Vestibulum tincidunt iaculis libero, ac sollicitudin nisi interdum et. Nunc tincidunt sem ut purus dignissim faucibus. Nam faucibus felis vel finibus gravida. Integer
+          accumsan, turpis at interdum porta, diam dolor lacinia ex, quis laoreet ante est nec eros. In fermentum nibh eu dolor blandit pharetra. </p>
+
+          <code>
+            with import <nixpkgs> {};
+          </code>
+        </section>
+
+        <section class="main-section" id="section4">
+          <header>
+            <h1 class="section-header">Section 4</h1>
+          </header>
+          <p>Aenean pellentesque cursus purus ac hendrerit. Praesent tempor viverra eros in eleifend. Donec laoreet erat dolor, id feugiat magna varius sit amet. Vivamus iaculis pretium odio sed
+          lacinia. Donec non consequat felis, sed tincidunt velit. In egestas enim facilisis odio blandit maximus. Etiam ac elit vestibulum, luctus sapien ac, volutpat magna. Nullam id ex
+          efficitur, sollicitudin mi sed, aliquam felis. </p>
+          <p>Fusce viverra vulputate dapibus. Nulla ultrices, purus ut mattis rutrum, eros risus faucibus lacus, ut tincidunt tortor nisi sed ligula. Suspendisse dapibus dolor et suscipit consequat.
+          Phasellus eros lacus, tincidunt in velit in, pharetra gravida velit. Aenean velit lacus, rutrum ut bibendum et, tempus tincidunt nunc. Vivamus interdum ipsum vulputate cursus posuere.
+          Pellentesque sagittis, odio sit amet lacinia varius, ipsum augue bibendum sapien, vel auctor turpis diam in ex. Proin pretium varius tempor. Nulla consequat finibus lectus in semper.
+          Vivamus interdum diam a nisl facilisis posuere. Suspendisse lobortis, libero nec faucibus pretium, mauris risus suscipit enim, et convallis dolor augue in libero. Duis tincidunt in dolor
+          quis laoreet. Nulla sollicitudin at enim ac rutrum. Maecenas faucibus metus sit amet varius consectetur. </p>
+
+          <code>
+            command || fail
+          </code>
+        </section>
+
+        <section class="main-section" id="section5">
+          <header>
+            <h1 class="section-header">Section 5</h1>
+          </header>
+          <p>Donec rutrum pretium dui, in commodo felis placerat id. Etiam ut lacus et sapien ornare condimentum id eget nisi. Praesent nec enim diam. Ut non metus dictum, commodo nisi ac,
+          vestibulum purus. Pellentesque eu ligula sem. Suspendisse potenti. Aliquam efficitur turpis nec interdum commodo. Nunc interdum laoreet tortor, non venenatis felis commodo ac. Proin
+          est massa, lobortis non porta eu, aliquam sed diam. Fusce quis quam a tortor venenatis pellentesque in eu neque. Phasellus fringilla sit amet felis non lobortis. Proin sit amet leo
+          ut metus mollis consequat. Vivamus nulla lacus, rhoncus ut mattis non, pharetra sed turpis. Phasellus nec lacinia ex. Aliquam eget nisi ullamcorper, mollis lacus sed, molestie magna. </p>
+          <p>Sed euismod ut velit sit amet pellentesque. Suspendisse in eros tincidunt, tincidunt augue quis, rhoncus tellus. Cras quis facilisis sapien. Praesent at dapibus metus. Ut arcu nunc,
+          dapibus id sapien in, commodo elementum mauris. Nullam ut ipsum convallis sapien venenatis sodales. Maecenas lorem massa, interdum sit amet turpis quis, blandit semper nisl. Proin
+          tincidunt felis ac scelerisque eleifend. Ut suscipit lectus diam, eu fermentum sem lacinia eget. Suspendisse vitae aliquam mauris. In id metus sed felis mattis ornare pretium vel eros.
+          Nullam faucibus ante vel felis mattis, et accumsan velit sagittis. Donec nec erat semper, facilisis mauris sit amet, posuere arcu. Cras vel semper odio. Aliquam erat volutpat. Fusce
+          rhoncus tortor elementum neque ultrices rutrum. </p>
+
+          <code>
+            echo "Hello $USER"
+          </code>
+        </section>
+
+      </main>
+    </div>
+  </body>
+</html>
