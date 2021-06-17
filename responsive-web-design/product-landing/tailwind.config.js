@@ -7,6 +7,8 @@ module.exports = {
         'primary': '#394648',
         'secondary': '#69995D',
         'tertiary': '#CBAC88',
+        'quaternary': '#BB342F',
+        'quinary': '#3F0D12'
       },
       minHeight: {
         '1/4': '25%',

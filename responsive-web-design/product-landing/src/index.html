@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <body class="bg-secondary">
-    <header class="bg-primary">
+    <header class="bg-quinary">
       <nav class="flex flex-row gap-x-4 justify-end">
-        <a href="#watch" class="text-tertiary">Watch it</a>
+        <a href="#watch" class="text-tertiary hover:underline font-bold">Watch it</a>
+        <a href="#features" class="text-tertiary hover:underline font-bold">Features</a>
+        <a href="#pricing" class="text-tertiary hover:underline font-bold">Pricing</a>
       </nav>
     </header>
 
@@ -11,30 +13,70 @@
 
       <div id="headline" class="lg:grid lg:grid-cols-5 flex flex-col my-12 mx-24 gap-12 place-items-center">
         <div class="flex flex-col text-center col-span-2">
-          <h1 class="text-4xl mb-2">Take back the control of your world. </br> Turn around the laws of the universe.</h1>
+          <h1 class="text-4xl font-black text-gray-900 mb-2">Take back the control of your world. </br> Turn around the laws of the universe.</h1>
 
-          <h2 class="text-2xl text-gray-300">Don't believe us? Just watch it in action</h2>
+          <h2 class="text-2xl font-bold text-gray-700">Don't believe us? Just watch it in action</h2>
         </div>
 
-        <iframe class="w-96 h-96 lg:w-3/4 col-span-3" src="https://www.youtube.com/embed/fiaWsgtJrNI" frameborder="0" allowfullscreen></iframe>
+        <iframe id="watch" class="w-96 h-96 lg:w-3/4 col-span-3" src="https://www.youtube.com/embed/fiaWsgtJrNI" frameborder="0" allowfullscreen></iframe>
 
       </div>
 
       <div id="attention-seeking" class="mb-12">
-        <h2 class="text-3xl text-center">Still don't think it's gonna change your life?</h2>
-        <h3 class="text-2xl text-center"><i class="italic">Skeptic fuck</i>. Watch this:</h3>
+        <h2 class="text-3xl text-gray-900 text-center">Still don't think it's gonna change your life?</h2>
+        <h3 class="text-2xl text-gray-900 text-center"><i class="italic">Skeptic fuck</i>. Watch this:</h3>
       </div>
 
       <div id="features" class="w-5/6">
-        <h1 class="bg-primary text-2xl text-center">Features</h1>
+        <h1 class="bg-primary text-gray-900 text-2xl text-center">Features</h1>
         <div class="flex flex-col items-center">
-          <ul class="list-disc ml-20 my-3 lg:w-1/4">
-            <li class="hover:text-red-300 hover:font-bold">Quantically aligned hyperdrive</li>
-            <li class="hover:text-red-300 hover:font-bold">Unlimited spinfusors</li>
-            <li class="hover:text-red-300 hover:font-bold">Genetically engineered positronic brain</li>
-            <li class="hover:text-red-300 hover:font-bold">Embedded turbopixelator</li>
-            <li class="hover:text-red-300 hover:font-bold">Always-on ultracooler</li>
+          <ul class="list-disc text-lg ml-20 my-3 lg:w-1/4">
+            <li class="hover:text-quaternary hover:font-bold">Quantically aligned hyperdrive</li>
+            <li class="hover:text-quaternary hover:font-bold">Unlimited spinfusors</li>
+            <li class="hover:text-quaternary hover:font-bold">Genetically engineered positronic brain</li>
+            <li class="hover:text-quaternary hover:font-bold">Embedded turbopixelator</li>
+            <li class="hover:text-quaternary hover:font-bold">Always-on ultracooler</li>
           </ul>
+        </div>
+      </div>
+
+      <div id="pricing" class="w-5/6 my-5">
+        <h1 class="bg-primary text-gray-900 text-2xl text-center">Pricing</h1>
+        <div id="price-boxes" class="lg:grid lg:grid-cols-3 gap-12 my-2">
+          <div id="free" class="border-2 border-gray-900 rounded shadow-lg my-3"> 
+            <h2 class="text-xl font-black text-center bg-tertiary">Free</h1>
+            <div class="bg-primary text-white text-lg flex flex-col items-center hover:bg-quaternary">
+              <ul class="list-disc list-inside ml-4">
+                <li>Support will ignore you</li>
+                <li>You will be laughed at</li>
+                <li>Nobody will love you</li>
+                <li>Basically admitting you are poor</li>
+              </ul>
+              <p class="my-4"> Only <span class="font-bold">$399</span> </p>
+            </div>
+          </div>
+          <div id="medium" class="border-2 border-gray-900 rounded shadow-lg my-3"> 
+            <h2 class="text-xl font-black text-center bg-tertiary">Medium</h1>
+            <div class="bg-primary text-white text-lg flex flex-col items-center hover:bg-quaternary">
+              <ul class="list-disc list-inside ml-4">
+                <li>Free puppy included</li>
+                <li>Support will only mistreat you</li>
+                <li>Gentle pat in the back</li>
+                <li>Refusing to admit you are poor</li>
+              </ul>
+              <p class="my-4"> <i class="font-italic">Only</i> <span class="font-bold">$39,999</span> </p>
+            </div>
+          </div>
+          <div id="premium" class="border-2 border-gray-900 rounded shadow-lg my-3"> 
+            <h2 class="text-xl font-black text-center bg-tertiary">Premium</h1>
+            <div class="bg-primary text-white text-lg flex flex-col items-center hover:bg-quaternary">
+              <ul class="list-disc list-inside ml-4">
+                <li>Special thanks from the team</li>
+                <li>Free dinner at Wendy's</li>
+                <li>Action packed trip to Detroit</li>
+                <li>Showing off your money</li>
+              </ul>
+              <p class="my-4 italic"> Your soul </p>
         </div>
       </div>
 
