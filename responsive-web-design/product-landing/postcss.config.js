@@ -6,7 +6,7 @@ module.exports = {
   plugins: [
     require('tailwindcss'),
     require('autoprefixer'),
-    require('@fullhuman/postcss-purgecss')({
+    process.env.NODE_ENV === "production" && require('@fullhuman/postcss-purgecss')({
       content: [
         './src/**/*.html'
       ],
