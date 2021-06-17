@@ -4,11 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#394648',
-        'secondary': '#69995D',
         'tertiary': '#CBAC88',
         'quaternary': '#BB342F',
-        'quinary': '#3F0D12'
+
+        'background': '#F1F7EE',
+        'highlighted': '#E7F59E',
+        'separator': '#92AA83',
+        'box-head': '#B0BEA9',
+        'box-content': '#E0EDC5',
       },
       minHeight: {
         '1/4': '25%',
