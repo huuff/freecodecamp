@@ -7,6 +7,7 @@
 ## QoL
 * Repeat button, for when you miss a quote
 * Use nix
+* Random quote hitting space
 
 ## Aesthetics
 * Change arrow icon when debug is uncollapsed
@@ -26,7 +27,7 @@
 
 ## Testing
 * Test the fade transition? Is it even possible? (I'm now sure it is possible)
-* I don't know if I should test the debug
+* I don't know whether I should test the debug
 
 ## Refactoring
 

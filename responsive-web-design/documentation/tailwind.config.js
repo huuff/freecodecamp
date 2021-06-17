@@ -10,13 +10,6 @@ module.exports = {
         quaternary: '#519872',
         quinary: '#34252F'
       },
-      gridTemplateColumns: {
-        '16': 'repeat(16, minmax(0, 1fr))',
-      },
-      gridColumn: {
-        'span-16': 'span 16 / span 16',
-        'span-13': 'span 13 / span 13',
-      }
     },
   },
   variants: {
