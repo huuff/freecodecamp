@@ -16,7 +16,7 @@
   }
 
   .box {
-    @apply border-2 border-gray-900 rounded shadow-lg my-3
+    @apply rounded my-3
   }
 
   .price-box-content {
@@ -28,6 +28,6 @@
   }
 
   .quote-box {
-    @apply bg-box-head grid grid-cols-3 items-center p-3 
+    @apply grid grid-cols-3 items-center p-3 text-gray-400
   }
 }
