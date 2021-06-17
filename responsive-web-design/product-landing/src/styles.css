@@ -1,4 +1,29 @@
 @tailwind base;
 @tailwind components;
-
 @tailwind utilities;
+
+@layer components {
+  .feature {
+    @apply hover:text-quaternary hover:font-bold
+  }
+
+  .header {
+    @apply bg-primary text-gray-900 text-2xl text-center my-2
+  }
+
+  .nav-link {
+    @apply text-tertiary hover:underline font-bold
+  }
+
+  .box {
+    @apply border-2 border-gray-900 rounded shadow-lg my-3
+  }
+
+  .price-box-content {
+    @apply bg-primary text-white text-lg flex flex-col items-center hover:bg-quaternary
+  }
+
+  .price-box-header {
+    @apply text-xl text-gray-900 text-center bg-tertiary
+  }
+}

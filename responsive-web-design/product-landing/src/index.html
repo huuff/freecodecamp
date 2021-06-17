@@ -3,10 +3,10 @@
   <body class="bg-secondary">
     <header class="fixed w-full bg-quinary">
       <nav class="flex flex-row gap-x-4 justify-end">
-        <a href="#watch" class="text-tertiary hover:underline font-bold">Watch it</a>
-        <a href="#features" class="text-tertiary hover:underline font-bold">Features</a>
-        <a href="#pricing" class="text-tertiary hover:underline font-bold">Pricing</a>
-        <a href="#testimonials" class="text-tertiary hover:underline font-bold">Testimonials</a>
+        <a href="#watch" class="nav-link">Watch it</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
       </nav>
     </header>
 
@@ -29,24 +29,24 @@
       </div>
 
       <div id="features" class="w-5/6">
-        <h1 class="bg-primary text-gray-900 text-2xl text-center">Features</h1>
+        <h1 class="header">Features</h1>
         <div class="flex flex-col items-center">
           <ul class="list-disc text-lg ml-20 my-3 lg:w-1/4">
-            <li class="hover:text-quaternary hover:font-bold">Quantically aligned hyperdrive</li>
-            <li class="hover:text-quaternary hover:font-bold">Unlimited spinfusors</li>
-            <li class="hover:text-quaternary hover:font-bold">Genetically engineered positronic brain</li>
-            <li class="hover:text-quaternary hover:font-bold">Embedded turbopixelator</li>
-            <li class="hover:text-quaternary hover:font-bold">Always-on ultracooler</li>
+            <li class="feature">Quantically aligned hyperdrive</li>
+            <li class="feature">Unlimited spinfusors</li>
+            <li class="feature">Genetically engineered positronic brain</li>
+            <li class="feature">Embedded turbopixelator</li>
+            <li class="feature">Always-on ultracooler</li>
           </ul>
         </div>
       </div>
 
       <div id="pricing" class="w-5/6 my-5">
-        <h1 class="bg-primary text-gray-900 text-2xl text-center">Pricing</h1>
+        <h1 class="header">Pricing</h1>
         <div id="price-boxes" class="lg:grid lg:grid-cols-3 gap-12 my-2">
-          <div id="free" class="border-2 border-gray-900 rounded shadow-lg my-3"> 
-            <h2 class="text-xl font-black text-center bg-tertiary">Free</h1>
-            <div class="bg-primary text-white text-lg flex flex-col items-center hover:bg-quaternary">
+          <div id="free" class="box"> 
+            <h2 class="price-box-header">Free</h1>
+            <div class="price-box-content">
               <ul class="list-disc list-inside ml-4">
                 <li>Support will ignore you</li>
                 <li>You will be laughed at</li>
@@ -56,9 +56,9 @@
               <p class="my-4"> Only <span class="font-bold">$399</span> </p>
             </div>
           </div>
-          <div id="medium" class="border-2 border-gray-900 rounded shadow-lg my-3"> 
-            <h2 class="text-xl font-black text-center bg-tertiary">Medium</h1>
-            <div class="bg-primary text-white text-lg flex flex-col items-center hover:bg-quaternary">
+          <div id="medium" class="box"> 
+            <h2 class="price-box-header">Medium</h1>
+            <div class="price-box-content">
               <ul class="list-disc list-inside ml-4">
                 <li>Free puppy included</li>
                 <li>Support will only mistreat you</li>
@@ -68,9 +68,9 @@
               <p class="my-4"> <i class="font-italic">Only</i> <span class="font-bold">$39,999</span> </p>
             </div>
           </div>
-          <div id="premium" class="border-2 border-gray-900 rounded shadow-lg my-3"> 
-            <h2 class="text-xl font-black text-center bg-tertiary">Premium</h1>
-            <div class="bg-primary text-white text-lg flex flex-col items-center hover:bg-quaternary">
+          <div id="premium" class="box"> 
+            <h2 class="price-box-header">Premium</h1>
+            <div class="price-box-content">
               <ul class="list-disc list-inside ml-4">
                 <li>Special thanks from the team</li>
                 <li>Free dinner at Wendy's</li>
@@ -84,28 +84,34 @@
       </div>
 
       <div id="testimonials" class="w-5/6">
-        <h1 class="bg-primary text-gray-900 text-2xl text-center mb-5">Testimonials</h1>
+        <h1 class="header">Testimonials</h1>
         <div class="lg:grid lg:grid-cols-3 gap-10">
-          <div class="bg-tertiary border-2 border-gray-900 grid grid-cols-3 rounded shadow-lg items-center p-3">
+          <div class="box">
+          <div class="bg-tertiary grid grid-cols-3 items-center p-3">
             <img src="./assets/images/terry.jpeg" class="w-32 rounded-full">
             <div class="col-span-2">
               <p class="text-lg italic">I think it fucked me up inside...</p>
               <p class="text-right text-lg">--Terry</p>
             </div>
           </div>
-          <div class="bg-tertiary border-2 border-gray-900 grid grid-cols-3 rounded shadow-lg items-center p-3">
+          </div>
+          <div class="box">
+          <div class="bg-tertiary grid grid-cols-3 items-center p-3">
             <img src="./assets/images/troy.jpeg" class="w-32 rounded-full">
             <div class="col-span-2">
               <p class="text-lg italic">It's fine, I guess.</p>
               <p class="text-right text-lg">--Troy</p>
             </div>
           </div>
-          <div class="bg-tertiary border-2 border-gray-900 grid grid-cols-3 rounded shadow-lg items-center p-3">
+          </div>
+          <div class="box">
+          <div class="bg-tertiary grid grid-cols-3 items-center p-3">
             <img src="./assets/images/tiffany.jpeg" class="w-32 rounded-full">
             <div class="col-span-2">
-              <p class="text-lg italic">They took my money and never heard of them again.</p>
+              <p class="text-lg italic">They took my money and never saw them again.</p>
               <p class="text-right text-lg">--Tiffany</p>
             </div>
+          </div>
           </div>
         </div>
       </div>
