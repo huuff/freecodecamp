@@ -10,6 +10,9 @@ module.exports = {
         'box-head': '#6184D8',
         'box-content': '#0D5D56',
       },
+      outline: {
+        highlighted: '3px solid #51CB20',
+      }
     },
   },
   variants: {
