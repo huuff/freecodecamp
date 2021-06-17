@@ -1,65 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-        <header id="header">
-                <nav id="nav-bar">
-                    <a href="#watch" class="nav-link">Watch it</a>
-                    <a href="#features" class="nav-link">Features</a>
-                    <a href="#buy" class="nav-link">Buy it</a>
-                    <a href="#suscribe" class="nav-link">Suscribe</a>
-                </nav>
-        </header>
+  <body class="bg-secondary">
+    <header class="bg-primary">
+      <nav class="flex flex-row gap-x-4 justify-end">
+        <a href="#watch" class="text-tertiary">Watch it</a>
+      </nav>
+    </header>
 
-        <main>
-            <h1>The <em>definitive</em> decrombulaster</h1>
+    <main class="flex flex-col items-center">
 
-            <h2 id="watch">Watch it in action</h2>
-            <iframe class="content" id="video" width="560" height="315" src="https://www.youtube.com/embed/fiaWsgtJrNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div id="headline" class="lg:grid lg:grid-cols-5 flex flex-col my-12 mx-24 gap-12 place-items-center">
+        <div class="flex flex-col text-center col-span-2">
+          <h1 class="text-4xl mb-2">Take back the control of your world. </br> Turn around the laws of the universe.</h1>
 
-            <h2 id="features">Features</h2>
-            <ul class="content">
-                <li>Unlimited spinfusors</li>
-                <li>Automatic positron connection</li>
-                <li>Focusing perma-blindering</li>
-                <li>Sleek design</li>
-                <li>Basically undestructible</li>
-            </ul>
+          <h2 class="text-2xl text-gray-300">Don't believe us? Just watch it in action</h2>
+        </div>
 
-            <h2 id="buy">Buy it <em>NOW</em></h2>
-            <div id="packages">
-                <div id="box">
-                    <h3>Basic package</h3>
-                    <ul>
-                        <li>Only includes decrombulator</li>
-                        <li>No pfemburstor nor cremator</li>
-                        <li>Admitting you're poor</li>
-                    </ul>
-                    <p>Only <b>$499.99</b></p>
-                </div>
-                <div id="box">
-                    <h3>Advanced package</h3>
-                    <ul>
-                        <li>Glurker and bturmer included</li>
-                        <li>Geeksquad will set it for you</li>
-                        <li>Free sticker</li>
-                    </ul>
-                    <p> <em>Only</em> <b>$32,999.99</b></p>
-                </div>
-                <div id="box">
-                    <h3>Ultra++ package</h3>
-                    <ul>
-                        <li>Spurkel, frongel, maltonius, tetraminator, fuser, xcruiser, biterin all included</li>
-                    </ul>
-                    <p>Your soul</p>
-                </div>
-            </div>
+        <iframe class="w-96 h-96 lg:w-3/4 col-span-3" src="https://www.youtube.com/embed/fiaWsgtJrNI" frameborder="0" allowfullscreen></iframe>
 
-            <h2 id="suscribe">Suscribe or die</h2>
-            <form id="form" action="https://www.freecodecamp.com/email-submit">
-                <input type="email" id="email" name="email" placeholder="Enter your email">
-                <input type="submit" id="submit" value="I need to know more">
-            </form>
-        </main>
-    </body>
+      </div>
+
+      <div id="attention-seeking" class="mb-12">
+        <h2 class="text-3xl text-center">Still don't think it's gonna change your life?</h2>
+        <h3 class="text-2xl text-center"><i class="italic">Skeptic fuck</i>. Watch this:</h3>
+      </div>
+
+      <div id="features" class="w-5/6">
+        <h1 class="bg-primary text-2xl text-center">Features</h1>
+        <div class="flex flex-col items-center">
+          <ul class="list-disc ml-20 my-3 lg:w-1/4">
+            <li class="hover:text-red-300 hover:font-bold">Quantically aligned hyperdrive</li>
+            <li class="hover:text-red-300 hover:font-bold">Unlimited spinfusors</li>
+            <li class="hover:text-red-300 hover:font-bold">Genetically engineered positronic brain</li>
+            <li class="hover:text-red-300 hover:font-bold">Embedded turbopixelator</li>
+            <li class="hover:text-red-300 hover:font-bold">Always-on ultracooler</li>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+  </body>
 </html>
