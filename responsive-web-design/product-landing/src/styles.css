@@ -4,15 +4,15 @@
 
 @layer components {
   .feature {
-    @apply hover:text-red-700 hover:font-bold
+    @apply hover:text-highlighted hover:font-bold text-gray-300
   }
 
   .header {
-    @apply bg-separator text-gray-900 text-2xl text-center my-2
+    @apply bg-separator text-gray-200 text-2xl text-center my-2
   }
 
   .nav-link {
-    @apply text-tertiary hover:underline font-bold
+    @apply text-gray-100 hover:underline font-bold
   }
 
   .box {
@@ -20,14 +20,14 @@
   }
 
   .price-box-content {
-    @apply bg-box-content text-gray-900 text-lg flex flex-col items-center hover:bg-quaternary
+    @apply bg-box-content text-gray-300 text-lg flex flex-col items-center hover:bg-highlighted hover:text-gray-700 hover:font-bold
   }
 
   .price-box-header {
-    @apply text-xl text-gray-900 text-center bg-box-head
+    @apply text-xl text-gray-100 text-center bg-box-head
   }
 
   .quote-box {
-    @apply bg-box-content grid grid-cols-3 items-center p-3
+    @apply bg-box-head grid grid-cols-3 items-center p-3 
   }
 }
