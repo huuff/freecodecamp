@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <body class="bg-secondary">
-    <header class="bg-quinary">
+    <header class="fixed w-full bg-quinary">
       <nav class="flex flex-row gap-x-4 justify-end">
         <a href="#watch" class="text-tertiary hover:underline font-bold">Watch it</a>
         <a href="#features" class="text-tertiary hover:underline font-bold">Features</a>
         <a href="#pricing" class="text-tertiary hover:underline font-bold">Pricing</a>
+        <a href="#testimonials" class="text-tertiary hover:underline font-bold">Testimonials</a>
       </nav>
     </header>
 
@@ -77,9 +78,37 @@
                 <li>Showing off your money</li>
               </ul>
               <p class="my-4 italic"> Your soul </p>
+            </div>
+          </div>
         </div>
       </div>
 
+      <div id="testimonials" class="w-5/6">
+        <h1 class="bg-primary text-gray-900 text-2xl text-center mb-5">Testimonials</h1>
+        <div class="lg:grid lg:grid-cols-3 gap-10">
+          <div class="bg-tertiary border-2 border-gray-900 grid grid-cols-3 rounded shadow-lg items-center p-3">
+            <img src="./assets/images/terry.jpeg" class="w-32 rounded-full">
+            <div class="col-span-2">
+              <p class="text-lg italic">I think it fucked me up inside...</p>
+              <p class="text-right text-lg">--Terry</p>
+            </div>
+          </div>
+          <div class="bg-tertiary border-2 border-gray-900 grid grid-cols-3 rounded shadow-lg items-center p-3">
+            <img src="./assets/images/troy.jpeg" class="w-32 rounded-full">
+            <div class="col-span-2">
+              <p class="text-lg italic">It's fine, I guess.</p>
+              <p class="text-right text-lg">--Troy</p>
+            </div>
+          </div>
+          <div class="bg-tertiary border-2 border-gray-900 grid grid-cols-3 rounded shadow-lg items-center p-3">
+            <img src="./assets/images/tiffany.jpeg" class="w-32 rounded-full">
+            <div class="col-span-2">
+              <p class="text-lg italic">They took my money and never heard of them again.</p>
+              <p class="text-right text-lg">--Tiffany</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>
